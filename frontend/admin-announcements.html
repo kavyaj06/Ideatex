@@ -4,7 +4,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Admin Announcement Manager | CampusAI</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -12,12 +12,12 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#7f13ec",
-                        "background-light": "#f8fafc",
+                        "primary": "#6D28D9",
+                        "background-light": "#F8FAFC",
                         "background-dark": "#191022",
                     },
                     fontFamily: {
-                        "display": ["Work Sans", "sans-serif"]
+                        "display": ["Lexend", "sans-serif"]
                     },
                     borderRadius: {
                         "DEFAULT": "0.5rem",
@@ -36,53 +36,63 @@
         :root {
             --primary-color: #7f13ec;
         }
-        .nav-link-active {
-            @apply border-b-2 border-primary text-primary font-bold;
-        }
         .nav-link {
-            @apply text-[#64748b] hover:text-primary transition-colors flex items-center gap-2 px-1 py-4 font-medium;
+            @apply flex items-center gap-2 px-4 py-6 text-slate-500 hover:text-primary transition-all duration-200 relative text-sm font-medium whitespace-nowrap;
+        }
+        .nav-link-active {
+            @apply text-primary font-semibold;
+        }
+        .nav-link-active::after {
+            content: '';
+            @apply absolute bottom-0 left-4 right-4 h-[3px] bg-primary rounded-t-full;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
         }
     </style>
 </head>
 <body class="bg-[#f8fafc] dark:bg-background-dark font-display text-[#1e293b] dark:text-white min-h-screen">
 <div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between border-b border-[#e2e8f0] bg-white dark:bg-[#191022] px-10 sticky top-0 z-50 h-20">
-<div class="flex items-center gap-16">
-<div class="flex items-center gap-2">
-<div class="size-8 text-primary">
-<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"></path>
-<path d="M2 17L12 22L22 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M2 12L12 17L22 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-8 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2 py-4">
+<div class="text-primary">
+<svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
 </svg>
 </div>
-<h2 class="text-xl font-bold tracking-tight">CampusAI</h2>
-</div>
-<nav class="flex items-center gap-10 h-20">
-<a class="nav-link text-sm h-full" href="admindashboard.html">
-<span class="material-symbols-outlined text-[20px]">grid_view</span>
-                    Dashboard
-                </a>
-<a class="nav-link text-sm h-full" href="admin-students.html">
-<span class="material-symbols-outlined text-[20px]">group</span>
-                    Students
-                </a>
-<a class="nav-link nav-link-active text-sm h-full" href="admin-announcements.html">
-<span class="material-symbols-outlined text-[20px]">campaign</span>
-                    Announcements
-                </a>
-<a class="nav-link text-sm h-full" href="admin-companies.html">
-<span class="material-symbols-outlined text-[20px]">domain</span>
-                    Companies
-                </a>
-</nav>
+<h2 class="text-xl font-bold tracking-tight text-[#1E293B]">CampusAI</h2>
 </div>
 <div class="flex items-center">
-<button class="border-2 border-primary text-primary px-8 py-2 rounded-xl text-sm font-bold hover:bg-primary/5 transition-all" onclick="logout()">
-                Logout
-            </button>
+<a class="nav-link" href="admindashboard.html">
+<span class="material-symbols-outlined text-[22px]">grid_view</span>
+                        Dashboard
+                    </a>
+<a class="nav-link" href="admin-students.html">
+<span class="material-symbols-outlined text-[22px]">group</span>
+                        Students
+                    </a>
+<a class="nav-link nav-link-active" href="admin-announcements.html">
+<span class="material-symbols-outlined text-[22px] filled">campaign</span>
+                        Announcements
+                    </a>
+<a class="nav-link" href="admin-companies.html">
+<span class="material-symbols-outlined text-[22px]">business</span>
+                        Companies
+                    </a>
 </div>
-</header>
+</div>
+<div class="flex items-center">
+<button class="px-8 py-2 border-2 border-primary text-primary rounded-xl text-sm font-bold hover:bg-primary/5 transition-colors" onclick="logout()">
+                    Logout
+                </button>
+</div>
+</div>
+</nav>
 <main class="flex-1 overflow-y-auto py-10 px-10">
 <div class="max-w-[1400px] mx-auto space-y-8">
 <div class="flex flex-col gap-1">
