@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Screening Assessments Overview - CampusAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7C3AED",
+                        secondary: "#F5F3FF",
+                        accent: "#6D28D9",
+                        "background-light": "#FAFAFA",
+                    },
+                    fontFamily: {
+                        display: "Lexend",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        :root {
+            --primary-color: #7C3AED;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 min-h-screen flex flex-col">
+<header class="w-full border-b border-slate-200 px-6 lg:px-20 py-3 bg-white sticky top-0 z-50">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight text-slate-800">CampusAI</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Profile</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Resume</a>
+<a class="text-sm font-medium text-primary relative after:content-[''] after:absolute after:-bottom-[23px] after:left-0 after:w-full after:h-0.5 after:bg-primary" href="#">Screening</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Results</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Progress</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">News</a>
+</nav>
+<div class="flex items-center">
+<button class="px-6 py-2 border-2 border-primary text-primary font-bold rounded-xl text-sm hover:bg-primary hover:text-white transition-all">
+                        Logout
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-[1400px] mx-auto w-full px-6 py-12">
+<div class="mb-12">
+<h1 class="text-3xl font-bold text-slate-900">Screening Assessments Overview</h1>
+<p class="text-slate-500 mt-2 max-w-2xl">Complete these mandatory evaluations to unlock personalized career guidance and qualify for upcoming campus placement drives.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
+<div class="bg-white rounded-xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">assignment</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Assessment 1</h3>
+<p class="text-primary font-semibold text-sm mb-4">3 Sections (5 Questions each)</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                    This initial evaluation measures your foundational logic and domain-specific knowledge across three core modules.
+                </p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Duration</p>
+<p class="text-sm font-bold text-slate-700">30 Mins</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-primary text-[20px]">format_list_bulleted</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Total</p>
+<p class="text-sm font-bold text-slate-700">15 Questions</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3.5 bg-primary text-white rounded-lg font-bold hover:bg-accent transition-all shadow-sm flex items-center justify-center gap-2">
+                    Take Assessment
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<div class="bg-white rounded-xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Assessment 2</h3>
+<p class="text-primary font-semibold text-sm mb-4">3 Sections (5 Questions each)</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                    The secondary evaluation focuses on advanced problem-solving capabilities and analytical thinking skills.
+                </p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Duration</p>
+<p class="text-sm font-bold text-slate-700">30 Mins</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-primary text-[20px]">format_list_bulleted</span>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Total</p>
+<p class="text-sm font-bold text-slate-700">15 Questions</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3.5 bg-primary text-white rounded-lg font-bold hover:bg-accent transition-all shadow-sm flex items-center justify-center gap-2">
+                    Take Assessment
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="mt-12 p-6 bg-amber-50 rounded-xl border border-amber-100 flex items-start gap-4 max-w-5xl">
+<span class="material-symbols-outlined text-amber-500">info</span>
+<div class="text-sm">
+<h4 class="font-bold text-amber-900">Important Instructions</h4>
+<ul class="text-amber-800/80 mt-1 list-disc list-inside space-y-1">
+<li>Ensure a stable internet connection before starting the test.</li>
+<li>The assessments are proctored and will auto-submit once the timer expires.</li>
+<li>Once started, the assessment cannot be paused or restarted.</li>
+<li>Each assessment consists of 3 sections with 5 questions each for a total of 15 questions.</li>
+</ul>
+</div>
+</div>
+</main>
+<footer class="w-full py-8">
+<div class="max-w-[1400px] mx-auto px-6 flex justify-center border-t border-slate-100 pt-8">
+<p class="text-[11px] text-slate-400 font-medium">© 2024 CampusAI - Professional Screening Platform.</p>
+</div>
+</footer>
+
+</body></html>

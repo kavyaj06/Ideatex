@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Campus Placement Login | CampusAI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7c3aed",
+                        "primary-hover": "#6d28d9",
+                        "background-light": "#fdfdfd",
+                        "background-dark": "#0f172a"
+                    },
+                    fontFamily: {
+                        display: "Lexend"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        "2xl": "1rem",
+                        full: "9999px"
+                    },
+                    boxShadow: {
+                        'purple-soft': '0 20px 50px -12px rgba(124, 58, 237, 0.15)',
+                    }
+                }
+            }
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display antialiased bg-background-light dark:bg-background-dark;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <header
+        class="flex items-center justify-between whitespace-nowrap bg-transparent px-6 md:px-10 py-6 z-20 w-full absolute top-0">
+        <div class="flex items-center gap-3 text-primary">
+            <div class="size-9">
+                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V44Z"
+                        fill="currentColor" fill-rule="evenodd" opacity="0.2"></path>
+                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                        fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+            </div>
+            <h2 class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-tight">CampusAI</h2>
+        </div>
+        <div class="flex items-center gap-6">
+        </div>
+    </header>
+    <main class="flex-1 flex items-center justify-center p-6 pt-24">
+        <div class="w-full max-w-[480px]">
+            <div
+                class="bg-white dark:bg-slate-900 shadow-purple-soft rounded-2xl border border-slate-50 dark:border-slate-800 p-8 md:p-12">
+                <div class="flex flex-col items-center mb-10">
+                    <div
+                        class="w-20 h-20 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 border border-primary/10">
+                        <span class="material-symbols-outlined text-primary text-4xl">school</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Placement Portal</h1>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm text-center mt-2">Sign in to your account</p>
+                </div>
+                <div
+                    class="flex p-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl mb-8 border border-slate-100 dark:border-slate-800">
+                    <label
+                        class="flex cursor-pointer h-12 flex-1 items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-slate-400 text-sm font-bold leading-normal transition-all">
+                        <span class="truncate">Student</span>
+                        <input checked="" class="invisible w-0" name="role-select" type="radio" value="Student" />
+                    </label>
+                    <label
+                        class="flex cursor-pointer h-12 flex-1 items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-slate-400 text-sm font-bold leading-normal transition-all">
+                        <span class="truncate">Administrator</span>
+                        <input class="invisible w-0" name="role-select" type="radio" value="Admin" />
+                    </label>
+                </div>
+                <form class="space-y-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">Email or Register
+                            Number</label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">person</span>
+                            <input
+                                class="form-input block w-full pl-12 pr-4 py-3.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-400"
+                                placeholder="e.g. 2024CS101" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center ml-1">
+                            <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Password</label>
+                            <a class="text-primary text-xs font-bold hover:underline" href="#">Forgot?</a>
+                        </div>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
+                            <input
+                                class="form-input block w-full pl-12 pr-4 py-3.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-400"
+                                placeholder="••••••••" type="password" />
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 pt-1 ml-1">
+                        <input
+                            class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 cursor-pointer"
+                            id="remember" type="checkbox" />
+                        <label class="text-sm text-slate-500 dark:text-slate-400 cursor-pointer select-none font-medium"
+                            for="remember">Keep me signed in</label>
+                    </div>
+                    <button
+                        class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-3 mt-4 group"
+                        type="button">
+                        <span>Sign In</span>
+                        <span
+                            class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </button>
+                </form>
+                <div class="relative my-10">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
+                    </div>
+                    <div class="relative flex justify-center text-[10px] uppercase tracking-widest">
+                        <span class="bg-white dark:bg-slate-900 px-4 text-slate-400 font-bold">Institutional
+                            Access</span>
+                    </div>
+                </div>
+                <button
+                    class="w-full flex items-center justify-center gap-3 px-4 py-3.5 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-semibold text-slate-700 dark:text-slate-300 text-sm">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4"></path>
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853"></path>
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                            fill="#FBBC05"></path>
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z"
+                            fill="#EA4335"></path>
+                    </svg>
+                    <span>Login with SSO</span>
+                </button>
+            </div>
+            <p class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400 font-medium">
+                New to CampusAI?
+                <a class="text-primary font-bold hover:underline ml-1" href="#">Contact Institution</a>
+            </p>
+        </div>
+    </main>
+    <footer class="py-8 px-10">
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex gap-8">
+                <a class="text-xs text-slate-400 hover:text-primary transition-colors font-medium" href="#">Privacy</a>
+                <a class="text-xs text-slate-400 hover:text-primary transition-colors font-medium" href="#">Terms</a>
+                <a class="text-xs text-slate-400 hover:text-primary transition-colors font-medium"
+                    href="#">Accessibility</a>
+            </div>
+            <p class="text-[10px] text-slate-400 dark:text-slate-500 font-bold tracking-[0.2em] uppercase">© 2024
+                CAMPUSAI SYSTEM</p>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script>
+        const loginBtn = document.querySelector('button[type="button"]');
+        const roleInputs = document.querySelectorAll('input[name="role-select"]');
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        const passwordInput = document.querySelector('input[type="password"]');
+
+        loginBtn.onclick = async () => {
+            // Check which role is selected
+            const isAdmin = roleInputs[1].checked; // Second radio button is Admin
+
+            const identifier = textInputs[0].value; // Email/Username field
+            const password = passwordInput.value;
+
+            console.log('Login attempt:', { isAdmin, identifier, password: '***' });
+
+            if (!identifier || !password) {
+                alert('Please enter both email/username and password');
+                return;
+            }
+
+            try {
+                let data;
+                if (isAdmin) {
+                    console.log('Calling admin login...');
+                    data = await api.adminLogin(identifier, password);
+                } else {
+                    console.log('Calling student login...');
+                    data = await api.studentLogin(identifier, password);
+                }
+
+                console.log('Login response:', data);
+
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('role', isAdmin ? 'admin' : 'student');
+                    localStorage.setItem('user', JSON.stringify(data.student || data.admin));
+
+                    if (isAdmin) {
+                        window.location.href = 'admindashboard.html';
+                    } else {
+                        window.location.href = 'studentdashboard.html';
+                    }
+                } else {
+                    alert(data.message || 'Login failed');
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('Invalid credentials. Please try again.');
+            }
+        };
+    </script>
+</body>
+
+</html>

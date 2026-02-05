@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Placement AI - Campus News &amp; Updates</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3aed",
+                        "primary-light": "#f5f3ff",
+                        "background-light": "#fbfbfe",
+                        "background-dark": "#0f172a",
+                        "accent-green": "#10b981",
+                        "job-blue": "#3b82f6",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @layer utilities {
+            .nav-link-active {
+                @apply text-primary border-b-2 border-primary font-bold;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen">
+    <nav class="sticky top-0 z-50 bg-white dark:bg-[#111418] border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="size-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-none tracking-tight">Placement AI</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Dashboard</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Profile</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Resume</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Screening</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Results</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Progress</a>
+                    <a class="px-4 h-16 flex items-center text-sm nav-link-active" href="#">News</a>
+                </div>
+                <div class="flex items-center">
+                    <button
+                        class="px-5 py-2 text-sm font-bold text-primary border-2 border-primary rounded-xl hover:bg-primary hover:text-white transition-all">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <header class="mb-10">
+            <h2 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Campus News &amp; Updates</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-2 text-lg">Stay updated with upcoming placements and
+                announcements.</p>
+        </header>
+        <div class="flex flex-wrap gap-2 mb-10">
+            <button
+                class="px-6 py-2 bg-primary text-white rounded-full text-sm font-bold shadow-md shadow-primary/20">All</button>
+            <button
+                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Placements</button>
+            <button
+                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Assessment</button>
+            <button
+                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">General</button>
+        </div>
+        <div class="space-y-6">
+            <div
+                class="bg-white dark:bg-[#111418] border-2 border-primary/20 rounded-2xl p-6 md:p-8 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0">
+                    <div
+                        class="bg-primary text-white px-6 py-1 rounded-bl-2xl text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                        <span class="material-symbols-outlined text-xs leading-none">push_pin</span> Pinned
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div
+                        class="size-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0">
+                        <img alt="Company Logo" class="w-12 h-12 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ3vo8xJNQQ95RJhPicQfC1knvT-YGryW83mkYoe6fWUtgTZjXtbFPiwC-jFRhv2nziXqq2E7wJ3HGXQ9D8KRAYJE6CsWgrvc9n8bGcqdio5uLPaMXDfUwvayGkTBtugl9eLSQ6mq1so6ens9hVPRaqTlrSBydml3-oGHRKQbzuIA5JUOOdoUtUVBWd542NWCP19XGpQUQDcf3p0h7s7UOH_26L9ozfJMdnHm_VUDk7EnjMkxXc7wSFjBLD8PvNZOOVfmN2zds" />
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="bg-accent-green/10 text-accent-green px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">New</span>
+                            <span class="text-slate-400 text-xs font-medium">Posted 2 hours ago</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Google Off-Campus Hiring 2024
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Exciting opportunity for
+                            final year students to join our engineering teams. We are looking for talented developers
+                            who are passionate about solving complex problems at scale.</p>
+                        <div
+                            class="bg-primary-light dark:bg-primary/10 rounded-xl p-3 mb-6 flex items-start gap-3 border border-primary/10">
+                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">verified</span>
+                            <div>
+                                <span
+                                    class="block text-[10px] font-black uppercase tracking-wider text-primary mb-0.5">Eligibility</span>
+                                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">CGPA &gt; 8.0,
+                                    All Departments</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-4 text-sm text-slate-500 font-medium">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-lg">location_on</span> Remote / Hybrid
+                                </span>
+                                <span class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-lg">payments</span> Competitive Package
+                                </span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">Apply
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div
+                        class="size-16 rounded-xl bg-orange-50 dark:bg-orange-900/10 text-orange-500 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-3xl">assignment_late</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">Mandatory
+                                Assessment</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Aptitude Assessment Schedule
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">The quarterly aptitude benchmarking test for
+                            all 3rd and 4th year students is scheduled for the upcoming weekend. Attendance is
+                            compulsory for placement eligibility.</p>
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800 mb-4">
+                            <span class="material-symbols-outlined text-primary text-lg">info</span>
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400"><span
+                                    class="text-primary uppercase mr-1">Eligibility:</span> 3rd &amp; 4th Year
+                                Students</span>
+                        </div>
+                        <div class="flex flex-wrap gap-6">
+                            <div
+                                class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                                <span class="material-symbols-outlined text-primary">calendar_today</span>
+                                Saturday, Oct 26
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                                <span class="material-symbols-outlined text-primary">schedule</span>
+                                10:00 AM - 12:30 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div
+                        class="size-16 rounded-xl bg-blue-50 dark:bg-blue-900/10 text-blue-500 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-3xl">school</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">Skill
+                                Workshop</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Resume Workshop by HR Experts
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">Learn how to make your resume stand out in
+                            the AI era. Join guest speakers from top tech firms for a hands-on session on ATS
+                            optimization and storytelling.</p>
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                            <span class="material-symbols-outlined text-primary">event</span>
+                            Coming Next Wednesday
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <button
+                            class="w-full md:w-auto px-6 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Remind
+                            Me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="nav.js"></script>
+    <script>
+        async function loadAnnouncements() {
+            try {
+                const announcements = await api.getAnnouncements();
+                const container = document.querySelector('.space-y-6');
+                if (container && announcements.length > 0) {
+                    container.innerHTML = announcements.map(ann => `
+                        <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="size-16 rounded-xl bg-${ann.type === 'Company Update' ? 'primary' : 'orange'}-50 dark:bg-${ann.type === 'Company Update' ? 'primary' : 'orange'}-900/10 text-${ann.type === 'Company Update' ? 'primary' : 'orange'}-500 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-3xl">${ann.type === 'Company Update' ? 'campaign' : ann.type === 'Test Instruction' ? 'assignment_late' : 'notifications'}</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-${ann.type === 'Company Update' ? 'accent-green' : 'primary'}/10 text-${ann.type === 'Company Update' ? 'accent-green' : 'primary'} px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">${ann.type}</span>
+                                        <span class="text-slate-400 text-xs font-medium">Posted ${new Date(ann.createdAt).toLocaleDateString()}</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${ann.title}</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4">${ann.content}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        loadAnnouncements();
+    </script>
+</body>
+
+</html>

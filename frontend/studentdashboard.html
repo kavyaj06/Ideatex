@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Placement AI - Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7c3aed",
+                        "primary-light": "#f5f3ff",
+                        "background-light": "#fbfbfe",
+                        "background-dark": "#0f172a",
+                        "accent-green": "#10b981",
+                        "job-blue": "#3b82f6",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @layer utilities {
+            .nav-link-active {
+                @apply text-primary border-b-2 border-primary;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen">
+    <nav class="sticky top-0 z-50 bg-white dark:bg-[#111418] border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="size-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-none tracking-tight">Placement AI</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a class="px-4 h-16 flex items-center text-sm font-semibold nav-link-active" href="#">Dashboard</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Profile</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Resume</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Screening</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Results</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">Progress</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">News</a>
+                </div>
+                <div class="flex items-center">
+                    <button
+                        class="px-5 py-2 text-sm font-bold text-primary border-2 border-primary rounded-xl hover:bg-primary hover:text-white transition-all">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Dashboard Overview</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-1">Welcome back, Alex! Review your progress and upcoming
+                    opportunities.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+            <div onclick="window.location.href='news.html'"
+                class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex items-center justify-between shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white">New News</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider mt-2">
+                        Stay Updated</p>
+                </div>
+                <div class="bg-primary/10 p-4 rounded-2xl text-primary">
+                    <span class="material-symbols-outlined text-[40px]">newspaper</span>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col justify-between shadow-sm">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider mb-2">
+                            Resume Score</p>
+                        <h3 class="text-5xl font-black text-slate-900 dark:text-white">82<span
+                                class="text-2xl font-normal text-slate-400">/100</span></h3>
+                    </div>
+                    <div class="bg-primary/10 p-3 rounded-xl text-primary">
+                        <span class="material-symbols-outlined text-[32px]">article</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+                        <div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+                    </div>
+                    <div class="flex justify-between items-center mt-3">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium italic">Your resume is ATS
+                            optimized and ready.</p>
+                        <button onclick="window.location.href='resume.html'"
+                            class="text-primary text-xs font-bold hover:underline">Improve Score</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">Domain Expertise</h2>
+                <button onclick="window.location.href='results.html'"
+                    class="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                    Analytics Dashboard <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="size-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center">
+                                <span class="material-symbols-outlined">calculate</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Aptitude</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Logic &amp;
+                                    Quant</p>
+                            </div>
+                        </div>
+                        <span class="text-xl font-black text-slate-900 dark:text-white">92%</span>
+                    </div>
+                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-orange-500 rounded-full" style="width: 92%;"></div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined">code</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Coding</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Python / DSA
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-xl font-black text-slate-900 dark:text-white">78%</span>
+                    </div>
+                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full" style="width: 78%;"></div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="size-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                                <span class="material-symbols-outlined">groups</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Communication</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Group
+                                    Discussion</p>
+                            </div>
+                        </div>
+                        <span class="text-xl font-black text-slate-900 dark:text-white">85%</span>
+                    </div>
+                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Recommended Jobs</h2>
+            </div>
+            <div class="space-y-4">
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-6 shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+                    <div
+                        class="size-16 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-700">
+                        <img alt="Company Logo" class="w-10 h-10 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ3vo8xJNQQ95RJhPicQfC1knvT-YGryW83mkYoe6fWUtgTZjXtbFPiwC-jFRhv2nziXqq2E7wJ3HGXQ9D8KRAYJE6CsWgrvc9n8bGcqdio5uLPaMXDfUwvayGkTBtugl9eLSQ6mq1so6ens9hVPRaqTlrSBydml3-oGHRKQbzuIA5JUOOdoUtUVBWd542NWCP19XGpQUQDcf3p0h7s7UOH_26L9ozfJMdnHm_VUDk7EnjMkxXc7wSFjBLD8PvNZOOVfmN2zds" />
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Full Stack Engineer
+                        </h4>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium">TechNova Solutions <span
+                                class="mx-1.5 text-slate-300">•</span> Remote</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end justify-center">
+                        <span
+                            class="bg-accent-green/10 text-accent-green px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider border border-accent-green/20">98%
+                            Match</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-6 shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+                    <div
+                        class="size-16 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-700">
+                        <img alt="Company Logo" class="w-10 h-10 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnopGAkzlATrHbGtBUbUiaZS1aDeP7pD81dFS6o8JlkhPsH9HgoMoN09fMmr13cIYjfg76emNYToJjo-Aup6qjrdxbXlJ7cf9cPuA-OJ27SRY_51vU2onzAVbDN5upkHOVzrz0WrM4yQkVr6ggoCZvLB2dM9f1F4gJ0gJjwfMPy8dyMhd0V51Piy_ftgeIqBUvLsr5nGaxpXsmOlzOxc79or47NZaQCPtz2u5WvqUKbDo8AAHqMkHkoBQ4-0r87tpJZZlHZqQk" />
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">AI Research Intern
+                        </h4>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium">Global AI Lab <span
+                                class="mx-1.5 text-slate-300">•</span> San Francisco, CA</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end justify-center">
+                        <span
+                            class="bg-accent-green/10 text-accent-green px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider border border-accent-green/20">92%
+                            Match</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-6 shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+                    <div
+                        class="size-16 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-700">
+                        <div class="size-10 bg-primary/10 rounded flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">analytics</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Data Analyst</h4>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium">Insight Corp <span
+                                class="mx-1.5 text-slate-300">•</span> Bangalore, India</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end justify-center">
+                        <span
+                            class="bg-accent-green/10 text-accent-green px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider border border-accent-green/20">85%
+                            Match</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-12">
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="nav.js"></script>
+    <script>
+        async function loadDashboard() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) return;
+
+            try {
+                // Fetch latest profile
+                const profile = await api.getStudentProfile(user._id);
+                if (profile) {
+                    // Update screening scores
+                    const scoreTexts = document.querySelectorAll('.text-xl.font-black');
+                    const bars = document.querySelectorAll('.h-full.bg-orange-500, .h-full.bg-primary, .h-full.bg-blue-500');
+
+                    if (scoreTexts.length >= 3) {
+                        scoreTexts[0].innerText = `${profile.screeningScores.aptitude}%`;
+                        scoreTexts[1].innerText = `${profile.screeningScores.coding}%`;
+                        scoreTexts[2].innerText = `${profile.screeningScores.gd}%`;
+
+                        if (bars.length >= 3) {
+                            bars[0].style.width = `${profile.screeningScores.aptitude}%`;
+                            bars[1].style.width = `${profile.screeningScores.coding}%`;
+                            bars[2].style.width = `${profile.screeningScores.gd}%`;
+                        }
+                    }
+
+                    // Update Resume Score
+                    const resumeScoreText = document.querySelector('h3.text-5xl.font-black');
+                    if (resumeScoreText) {
+                        resumeScoreText.innerHTML = `${profile.resumeScore || 0}<span class="text-2xl font-normal text-slate-400">/100</span>`;
+                    }
+                    // The second card might also have a bar
+                    const resumeBar = document.querySelectorAll('.bg-primary.h-full.rounded-full')[1]; // Index 1 is the bar in the resume card
+                    if (resumeBar) resumeBar.style.width = `${profile.resumeScore || 0}%`;
+
+                    // Fetch suggestions
+                    const suggestions = await api.getSuggestions(user._id);
+                    const jobContainer = document.querySelector('.space-y-4');
+                    if (jobContainer && suggestions.length > 0) {
+                        jobContainer.innerHTML = suggestions.map(company => `
+                            <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-6 shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+                                <div class="size-16 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-700">
+                                    <span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">${company.name}</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 font-medium">${company.description} <span class="mx-1.5 text-slate-300">•</span> ${company.location}</p>
+                                </div>
+                                <div class="flex flex-col items-start md:items-end justify-center">
+                                    <span class="bg-accent-green/10 text-accent-green px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider border border-accent-green/20">Recommended</span>
+                                    <p class="text-primary font-bold mt-1">${company.package}</p>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (err) {
+                console.error('Err loading dashboard:', err);
+            }
+        }
+        loadDashboard();
+    </script>
+</body>
+
+</html>

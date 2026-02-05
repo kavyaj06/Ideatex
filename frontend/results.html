@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Results &amp; AI Insights - Placement AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7C3AED",
+                        secondary: "#F5F3FF",
+                        accent: "#6D28D9",
+                        "purple-light": "#EDE9FE",
+                        "purple-deep": "#4C1D95",
+                        "background-light": "#F9FAFB"
+                    },
+                    fontFamily: {
+                        display: "Lexend",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .nav-tab-active {
+            color: #7C3AED;
+            border-bottom: 2px solid #7C3AED;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-slate-900 min-h-screen flex flex-col">
+    <header class="w-full border-b border-gray-100 px-6 lg:px-20 py-0 bg-white sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between h-16">
+            <div class="flex items-center gap-2">
+                <div class="bg-primary p-1.5 rounded-lg text-white">
+                    <span class="material-symbols-outlined text-2xl">rocket_launch</span>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-slate-900">Placement AI</h1>
+            </div>
+            <nav class="hidden md:flex items-center h-full">
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">Dashboard</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">Profile</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">Resume</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">Screening</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium nav-tab-active" href="#">Results</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">Progress</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                    href="#">News</a>
+            </nav>
+            <div class="flex items-center">
+                <button
+                    class="border-2 border-primary text-primary px-6 py-1.5 rounded-xl text-sm font-bold hover:bg-purple-50 transition-all">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow max-w-[1400px] mx-auto w-full px-6 lg:px-20 py-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-900">Results &amp; AI Insights</h1>
+                <p class="text-slate-500 mt-2">Personalized career guidance based on your cognitive and technical
+                    performance.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex items-center gap-2 bg-white text-primary border-2 border-primary px-4 py-2.5 rounded-xl font-bold hover:bg-purple-50 transition-all text-sm">
+                    <span class="material-symbols-outlined text-xl">upload</span>
+                    Upload
+                </button>
+                <button
+                    class="flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-accent transition-all shadow-lg shadow-primary/20 text-sm">
+                    <span class="material-symbols-outlined text-xl">download</span>
+                    Download Detailed Report
+                </button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Overall Percentile</p>
+                <div class="flex items-baseline gap-1">
+                    <h3 class="text-4xl font-bold text-slate-900">94.2</h3>
+                    <span class="text-slate-400 text-lg font-medium">%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full mt-6 overflow-hidden">
+                    <div class="bg-primary h-full w-[94.2%]"></div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Aptitude Score</p>
+                <div class="flex items-baseline gap-1">
+                    <h3 class="text-4xl font-bold text-slate-900">88</h3>
+                    <span class="text-slate-400 text-lg font-medium">/100</span>
+                </div>
+                <div
+                    class="flex items-center gap-1 mt-6 text-emerald-500 text-[11px] font-bold bg-emerald-50 px-2 py-0.5 rounded-full w-fit">
+                    <span class="material-symbols-outlined text-sm">trending_up</span>
+                    +5% THIS WEEK
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Coding Proficiency</p>
+                <h3 class="text-3xl font-bold text-slate-900">Advanced</h3>
+                <div class="w-full bg-slate-100 h-2 rounded-full mt-7 overflow-hidden">
+                    <div class="bg-primary h-full w-[85%]"></div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Communication</p>
+                <h3 class="text-4xl font-bold text-slate-900">B2+</h3>
+                <div class="mt-6 flex gap-2">
+                    <span class="px-2 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded">NEEDS
+                        PRACTICE</span>
+                </div>
+                <div class="absolute top-8 right-8 text-primary/10">
+                    <span class="material-symbols-outlined text-4xl">forum</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+            <div class="lg:flex-1 space-y-4">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900">Recommended Career Paths</h2>
+                    <a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                        Explore All
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </a>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-6">
+                    <div class="size-16 shrink-0 rounded-xl bg-purple-50 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">terminal</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Full Stack Developer</h3>
+                                <p class="text-slate-500 text-sm">Focus: Enterprise Web Applications</p>
+                            </div>
+                            <span
+                                class="px-3 py-1.5 bg-emerald-50 text-emerald-600 text-[11px] font-bold rounded-full">98%
+                                MATCH</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-6">
+                    <div class="size-16 shrink-0 rounded-xl bg-purple-50 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">query_stats</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Data Engineer</h3>
+                                <p class="text-slate-500 text-sm">Focus: Scalable Data Pipelines</p>
+                            </div>
+                            <span
+                                class="px-3 py-1.5 bg-emerald-50 text-emerald-600 text-[11px] font-bold rounded-full">92%
+                                MATCH</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-6">
+                    <div class="size-16 shrink-0 rounded-xl bg-purple-50 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">security</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Cybersecurity Analyst</h3>
+                                <p class="text-slate-500 text-sm">Focus: Threat Intelligence</p>
+                            </div>
+                            <span
+                                class="px-3 py-1.5 bg-emerald-50 text-emerald-600 text-[11px] font-bold rounded-full">85%
+                                MATCH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-80 space-y-6 flex flex-col">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex-1">
+                    <h3 class="font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-xl">bar_chart</span>
+                        Skill Breakdown
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
+                                <span class="text-slate-500">Logical Reasoning</span>
+                                <span class="text-primary">92%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-[92%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
+                                <span class="text-slate-500">Verbal Ability</span>
+                                <span class="text-primary">74%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-[74%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
+                                <span class="text-slate-500">Technical MCQs</span>
+                                <span class="text-primary">88%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-[88%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
+                                <span class="text-slate-500">Coding (Python)</span>
+                                <span class="text-primary">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-[95%] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wide flex items-center gap-2">
+                        <span class="material-symbols-outlined text-amber-500 text-lg">lightbulb</span>
+                        Areas to Improve
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex gap-3 p-3 bg-slate-50 rounded-xl">
+                            <span class="material-symbols-outlined text-amber-500 text-sm">warning</span>
+                            <p class="text-[11px] text-slate-600 leading-normal">Practice group discussion skills. Peer
+                                feedback was slightly below average.</p>
+                        </div>
+                        <div class="flex gap-3 p-3 bg-slate-50 rounded-xl">
+                            <span class="material-symbols-outlined text-amber-500 text-sm">warning</span>
+                            <p class="text-[11px] text-slate-600 leading-normal">Revise OS &amp; Networking fundamentals
+                                for core technical rounds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-purple-600 p-6 rounded-2xl text-white shadow-lg shadow-purple-200">
+                    <h3 class="font-bold text-white mb-2 text-sm">Start Prep</h3>
+                    <p class="text-[11px] text-purple-100 mb-4 leading-relaxed">
+                        Based on your profile, we recommend starting interview preparation modules.
+                    </p>
+                    <button
+                        class="w-full bg-white text-purple-600 font-bold py-2 rounded-lg text-xs hover:bg-purple-50 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="w-full py-12">
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="nav.js"></script>
+    <script>
+        async function loadResults() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) return;
+
+            try {
+                const profile = await api.getStudentProfile(user._id);
+                if (profile) {
+                    const scores = profile.screeningScores || {};
+
+                    // Update Aptitude
+                    const aptVal = scores.aptitude || 0;
+                    const aptElem = document.querySelectorAll('h3.text-4xl')[1];
+                    if (aptElem) aptElem.innerText = aptVal;
+
+                    // Update Coding
+                    const codingVal = scores.coding || 0;
+                    const codingTextElem = document.querySelector('h3.text-3xl');
+                    if (codingTextElem) {
+                        codingTextElem.innerText = codingVal > 80 ? 'Advanced' : codingVal > 50 ? 'Intermediate' : 'Beginner';
+                    }
+                    const codingBar = document.querySelectorAll('.bg-primary.h-full')[1];
+                    if (codingBar) codingBar.style.width = codingVal + '%';
+
+                    // Update GD
+                    const gdVal = scores.gd || 0;
+                    const gdElem = document.querySelectorAll('h3.text-4xl')[2];
+                    if (gdElem) gdElem.innerText = gdVal > 80 ? 'A' : gdVal > 60 ? 'B+' : 'B';
+
+                    // Update Skill Breakdown Bars
+                    const bars = document.querySelectorAll('.bg-primary.h-full.rounded-full');
+                    const values = [scores.logical || 85, scores.verbal || 70, scores.tech || 80, scores.coding || 75];
+                    bars.forEach((bar, i) => {
+                        if (values[i]) bar.style.width = values[i] + '%';
+                    });
+
+                    // Calculate and update Percentile (Simplified average for demo)
+                    const percentile = ((aptVal + codingVal + gdVal) / 3).toFixed(1);
+                    const pElem = document.querySelector('h3.text-4xl');
+                    if (pElem) pElem.innerText = percentile;
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        loadResults();
+    </script>
+</body>
+
+</html>
