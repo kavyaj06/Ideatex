@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Student Directory - CampusAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f0df2",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link-active {
+            border-bottom: 2px solid #7f0df2;
+            color: #7f0df2;
+        }
+        .nav-link-active .material-symbols-outlined {
+            color: #7f0df2;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#141118] dark:text-white font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e0dbe6] dark:border-[#352a45] bg-white dark:bg-[#1f162b] px-6 lg:px-40 py-0 sticky top-0 z-50 h-16">
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">school</span>
+</div>
+<h2 class="text-[#141118] dark:text-white text-xl font-bold leading-tight tracking-tight">CampusAI</h2>
+</div>
+<nav class="hidden md:flex items-center h-full gap-8">
+<a class="flex items-center gap-2 text-[#75608a] dark:text-gray-400 hover:text-primary transition-colors text-sm font-semibold h-full px-1 border-b-2 border-transparent" href="admindashboard.html">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-2 text-primary nav-link-active transition-colors text-sm font-semibold h-full px-1" href="admin-students.html">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                    Students
+                </a>
+<a class="flex items-center gap-2 text-[#75608a] dark:text-gray-400 hover:text-primary transition-colors text-sm font-semibold h-full px-1 border-b-2 border-transparent" href="admin-announcements.html">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+                    Announcements
+                </a>
+<a class="flex items-center gap-2 text-[#75608a] dark:text-gray-400 hover:text-primary transition-colors text-sm font-semibold h-full px-1 border-b-2 border-transparent" href="admin-companies.html">
+<span class="material-symbols-outlined text-[20px]">corporate_fare</span>
+                    Companies
+                </a>
+</nav>
+<div class="flex items-center">
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 border-2 border-primary text-primary hover:bg-primary hover:text-white text-sm font-bold transition-all" onclick="logout()">
+                    Logout
+                </button>
+</div>
+</header>
+<main class="flex-1 flex flex-col px-6 lg:px-40 py-6">
+<div class="flex flex-col gap-1 mb-6">
+<h1 class="text-[#141118] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Student Directory</h1>
+<p class="text-[#75608a] dark:text-gray-400 text-sm font-normal leading-normal">Manage student placement data and recruitment status</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="p-4 bg-white dark:bg-[#1f162b] rounded-xl border border-[#e0dbe6] dark:border-[#352a45] flex items-center gap-4 shadow-sm">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</div>
+<div>
+<p class="text-[11px] text-[#75608a] dark:text-gray-400 uppercase font-bold tracking-wider">Total Students</p>
+<p class="text-2xl font-black text-[#141118] dark:text-white leading-none mt-1">1,284</p>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-[#1f162b] rounded-xl border border-[#e0dbe6] dark:border-[#352a45] flex items-center gap-4 shadow-sm">
+<div class="size-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] text-[#75608a] dark:text-gray-400 uppercase font-bold tracking-wider">Total Placed</p>
+<p class="text-2xl font-black text-[#141118] dark:text-white leading-none mt-1">842</p>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-[#1f162b] rounded-xl border border-[#e0dbe6] dark:border-[#352a45] flex items-center gap-4 shadow-sm">
+<div class="size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined text-2xl">pending</span>
+</div>
+<div>
+<p class="text-[11px] text-[#75608a] dark:text-gray-400 uppercase font-bold tracking-wider">Not Placed</p>
+<p class="text-2xl font-black text-[#141118] dark:text-white leading-none mt-1">442</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-3 mb-4">
+<div class="flex-1">
+<label class="flex flex-col min-w-40 h-10 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-[#e0dbe6] dark:border-[#352a45] overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="text-[#75608a] flex bg-white dark:bg-[#1f162b] items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-white dark:bg-[#1f162b] text-[#141118] dark:text-white focus:outline-0 focus:ring-0 h-full placeholder:text-[#75608a] px-3 text-sm font-normal leading-normal" placeholder="Search by name, ID or department..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#1f162b] border border-[#e0dbe6] dark:border-[#352a45] px-3 hover:border-primary transition-colors group">
+<span class="text-[#141118] dark:text-white text-xs font-medium">Dept: All</span>
+<span class="material-symbols-outlined text-sm text-[#75608a] group-hover:text-primary">expand_more</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#1f162b] border border-[#e0dbe6] dark:border-[#352a45] px-3 hover:border-primary transition-colors group">
+<span class="text-[#141118] dark:text-white text-xs font-medium">Batch: 2024</span>
+<span class="material-symbols-outlined text-sm text-[#75608a] group-hover:text-primary">expand_more</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#1f162b] border border-[#e0dbe6] dark:border-[#352a45] px-3 hover:border-primary transition-colors group">
+<span class="text-[#141118] dark:text-white text-xs font-medium">Placement: All</span>
+<span class="material-symbols-outlined text-sm text-[#75608a] group-hover:text-primary">expand_more</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary px-3 hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-xs font-bold">More Filters</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1f162b] rounded-xl border border-[#e0dbe6] dark:border-[#352a45] overflow-hidden shadow-sm flex flex-col flex-1 min-h-[500px]">
+<div class="overflow-x-auto overflow-y-auto flex-1">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead class="sticky top-0 z-10">
+<tr class="bg-background-light dark:bg-[#2a1f3a] border-b border-[#e0dbe6] dark:border-[#352a45]">
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">Student ID</th>
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">Name</th>
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">Department</th>
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">CGPA</th>
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider">Company</th>
+<th class="px-6 py-4 text-right text-[#75608a] dark:text-gray-400 text-[11px] font-bold uppercase tracking-wider sticky right-0 bg-inherit shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0dbe6] dark:divide-[#352a45]">
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-001</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">AS</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Arjun Sharma</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Computer Science</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">9.12</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase">
+<span class="size-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                        Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white text-sm font-medium">TechCorp Solutions</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-002</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">PP</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Priya Patel</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Information Tech</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">8.45</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 uppercase">
+<span class="size-1.5 rounded-full bg-gray-400 mr-1.5"></span>
+                                        Not Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">-</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-003</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">RV</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Rahul Verma</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Mechanical Eng</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">7.80</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase">
+<span class="size-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                        Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white text-sm font-medium">AutoSystems Inc</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-004</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">MK</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Meera Kaur</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Computer Science</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">8.90</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase">
+<span class="size-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                        Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white text-sm font-medium">CloudLogic</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-005</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">AD</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Amit Das</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Electrical Eng</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">7.25</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 uppercase">
+<span class="size-1.5 rounded-full bg-gray-400 mr-1.5"></span>
+                                        Not Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">-</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-006</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">SN</div>
+<span class="text-[#141118] dark:text-white font-semibold text-sm">Sonia Nair</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Chemical Eng</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">8.10</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase">
+<span class="size-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                        Placed
+                                    </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white text-sm font-medium">PharmaFlow</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]">
+<button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">
+                                        View <span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-007</td>
+<td class="px-6 py-4 whitespace-nowrap"><div class="flex items-center gap-3"><div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">RK</div><span class="text-[#141118] dark:text-white font-semibold text-sm">Raj Kumar</span></div></td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Civil Engineering</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">7.95</td>
+<td class="px-6 py-4 whitespace-nowrap"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 uppercase"><span class="size-1.5 rounded-full bg-gray-400 mr-1.5"></span>Not Placed</span></td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">-</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]"><button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">View <span class="material-symbols-outlined text-[16px]">visibility</span></button></td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/20 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm font-medium">STU-2024-008</td>
+<td class="px-6 py-4 whitespace-nowrap"><div class="flex items-center gap-3"><div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">IS</div><span class="text-[#141118] dark:text-white font-semibold text-sm">Ishani Singh</span></div></td>
+<td class="px-6 py-4 whitespace-nowrap text-[#75608a] dark:text-gray-400 text-sm">Electronics</td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white font-medium text-sm">8.65</td>
+<td class="px-6 py-4 whitespace-nowrap"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase"><span class="size-1.5 rounded-full bg-green-500 mr-1.5"></span>Placed</span></td>
+<td class="px-6 py-4 whitespace-nowrap text-[#141118] dark:text-white text-sm font-medium">Microchips Co.</td>
+<td class="px-6 py-4 whitespace-nowrap text-right sticky right-0 bg-white dark:bg-[#1f162b] shadow-[-8px_0_8px_-4px_rgba(0,0,0,0.05)]"><button class="flex items-center gap-1.5 justify-end ml-auto text-primary font-bold text-xs hover:text-primary/80 uppercase tracking-wider transition-colors">View <span class="material-symbols-outlined text-[16px]">visibility</span></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between px-6 py-4 bg-background-light/30 dark:bg-background-dark/30 border-t border-[#e0dbe6] dark:border-[#352a45]">
+<p class="text-[12px] text-[#75608a] dark:text-gray-400">
+                        Showing <span class="font-bold text-[#141118] dark:text-white">1</span> to <span class="font-bold text-[#141118] dark:text-white">8</span> of <span class="font-bold text-[#141118] dark:text-white">1,284</span> results
+                    </p>
+<div class="flex gap-1">
+<button class="flex items-center justify-center size-8 rounded-lg border border-[#e0dbe6] dark:border-[#352a45] text-[#75608a] dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-all disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg bg-primary text-white font-bold text-xs">1</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-[#e0dbe6] dark:border-[#352a45] text-[#75608a] dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-all font-bold text-xs">2</button>
+<span class="flex items-center justify-center size-8 text-[#75608a] text-xs">...</span>
+<button class="flex items-center justify-center size-8 rounded-lg border border-[#e0dbe6] dark:border-[#352a45] text-[#75608a] dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('user');
+        window.location.href = 'adminlogin.html';
+    }
+</script>
+</body></html>
