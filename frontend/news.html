@@ -232,32 +232,58 @@
     <script>
         async function loadAnnouncements() {
             try {
-                const announcements = await api.getAnnouncements();
+                const response = await fetch('http://localhost:3000/api/data/announcements');
+                const announcements = await response.json();
                 const container = document.querySelector('.space-y-6');
+                
                 if (container && announcements.length > 0) {
-                    container.innerHTML = announcements.map(ann => `
-                        <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="size-16 rounded-xl bg-${ann.type === 'Company Update' ? 'primary' : 'orange'}-50 dark:bg-${ann.type === 'Company Update' ? 'primary' : 'orange'}-900/10 text-${ann.type === 'Company Update' ? 'primary' : 'orange'}-500 flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-3xl">${ann.type === 'Company Update' ? 'campaign' : ann.type === 'Test Instruction' ? 'assignment_late' : 'notifications'}</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="bg-${ann.type === 'Company Update' ? 'accent-green' : 'primary'}/10 text-${ann.type === 'Company Update' ? 'accent-green' : 'primary'} px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">${ann.type}</span>
-                                        <span class="text-slate-400 text-xs font-medium">Posted ${new Date(ann.createdAt).toLocaleDateString()}</span>
+                    const colorStyles = {
+                        'Placement': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
+                        'Workshop': { bg: '#DBEAFE', icon: '#3b82f6', text: '#2563EB', icon_name: 'school' },
+                        'General News': { bg: '#F1F5F9', icon: '#64748b', text: '#475569', icon_name: 'newspaper' },
+                        'Hackathon': { bg: '#E9D5FF', icon: '#a855f7', text: '#9333EA', icon_name: 'code' },
+                        'Company Update': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
+                        'Interview Schedule': { bg: '#FEF3C7', icon: '#f59e0b', text: '#D97706', icon_name: 'calendar_today' },
+                        'Test Instruction': { bg: '#FCA5A5', icon: '#dc2626', text: '#991B1B', icon_name: 'assignment' },
+                        'Result': { bg: '#DBEAFE', icon: '#0284c7', text: '#0369a1', icon_name: 'check_circle' }
+                    };
+                    
+                    container.innerHTML = announcements.map(ann => {
+                        const style = colorStyles[ann.type] || colorStyles['General News'];
+                        const date = new Date(ann.createdAt).toLocaleDateString('en-US', { 
+                            month: 'short', 
+                            day: 'numeric', 
+                            year: 'numeric'
+                        });
+                        
+                        return `
+                            <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row gap-6">
+                                    <div class="size-16 rounded-xl flex items-center justify-center shrink-0" style="background-color: ${style.bg}; color: ${style.icon};">
+                                        <span class="material-symbols-outlined text-3xl">${style.icon_name}</span>
                                     </div>
-                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${ann.title}</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4">${ann.content}</p>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background-color: rgba(109, 40, 217, 0.1); color: ${style.text};">${ann.type}</span>
+                                            <span class="text-slate-400 text-xs font-medium">Posted ${date}</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${ann.title}</h3>
+                                        <p class="text-slate-600 dark:text-slate-400 mb-4">${ann.content}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `).join('');
+                        `;
+                    }).join('');
                 }
             } catch (err) {
-                console.error(err);
+                console.error('Error loading announcements:', err);
             }
         }
+        
         loadAnnouncements();
+        
+        // Refresh announcements every 30 seconds
+        setInterval(loadAnnouncements, 30000);
     </script>
 </body>
 

@@ -42,6 +42,16 @@ exports.getAnnouncements = async (req, res) => {
     }
 };
 
+exports.deleteAnnouncement = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Announcement.findByIdAndDelete(id);
+        res.json({ message: 'Announcement deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
 // Student Profile Updates
 exports.updateStudentProfile = async (req, res) => {
     try {

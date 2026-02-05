@@ -106,24 +106,24 @@
                         Create New Announcement
                     </h2>
 </div>
-<div class="p-8 space-y-8">
+<form id="announcementForm" class="p-8 space-y-8">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="md:col-span-2">
 <label class="block text-sm font-bold text-[#475569] mb-2.5">Announcement Title</label>
-<input class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 placeholder:text-slate-400" placeholder="e.g., Google Recruitment Drive 2024 for Final Year Students" type="text"/>
+<input id="titleInput" class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 placeholder:text-slate-400" placeholder="e.g., Google Recruitment Drive 2024 for Final Year Students" type="text" required/>
 </div>
 <div>
 <label class="block text-sm font-bold text-[#475569] mb-2.5">Category</label>
-<select class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 appearance-none bg-no-repeat bg-[right_1rem_center]">
-<option>Placement</option>
-<option>Workshop</option>
-<option>General News</option>
-<option>Hackathon</option>
+<select id="typeInput" class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 appearance-none bg-no-repeat bg-[right_1rem_center]">
+<option value="Placement">Placement</option>
+<option value="Workshop">Workshop</option>
+<option value="General News">General News</option>
+<option value="Hackathon">Hackathon</option>
 </select>
 </div>
 <div>
 <label class="block text-sm font-bold text-[#475569] mb-2.5">Target Audience</label>
-<select class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 appearance-none bg-no-repeat bg-[right_1rem_center]">
+<select id="audienceInput" class="w-full rounded-xl border-[#e2e8f0] focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 appearance-none bg-no-repeat bg-[right_1rem_center]">
 <option>All Students</option>
 <option>2024 Batch - CS/IT</option>
 <option>2025 Batch - All Departments</option>
@@ -135,24 +135,24 @@
 <label class="block text-sm font-bold text-[#475569] mb-2.5">Content</label>
 <div class="border border-[#e2e8f0] rounded-2xl overflow-hidden shadow-sm">
 <div class="bg-[#f8fafc] border-b border-[#e2e8f0] p-4 flex gap-2">
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">format_bold</span></button>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">format_italic</span></button>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">format_underlined</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">format_underlined</span></button>
 <div class="w-[1px] h-6 bg-[#e2e8f0] mx-2"></div>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">format_list_numbered</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">format_list_numbered</span></button>
 <div class="w-[1px] h-6 bg-[#e2e8f0] mx-2"></div>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">link</span></button>
-<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all"><span class="material-symbols-outlined text-lg">image</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">link</span></button>
+<button class="p-2 hover:bg-white hover:shadow-sm rounded transition-all" type="button"><span class="material-symbols-outlined text-lg">image</span></button>
 </div>
-<textarea class="w-full p-6 border-none focus:ring-0 text-base min-h-[200px]" placeholder="Write your announcement details here..." rows="6"></textarea>
+<textarea id="contentInput" class="w-full p-6 border-none focus:ring-0 text-base min-h-[200px]" placeholder="Write your announcement details here..." rows="6" required></textarea>
 </div>
 </div>
 <div class="flex justify-end gap-4 pt-4">
-<button class="px-8 py-3.5 rounded-xl font-bold border border-[#e2e8f0] hover:bg-gray-50 transition-all text-[#475569]">Save Draft</button>
-<button class="px-10 py-3.5 rounded-xl font-bold bg-primary text-white hover:opacity-90 shadow-lg shadow-primary/20 transition-all">Publish Announcement</button>
+<button type="reset" class="px-8 py-3.5 rounded-xl font-bold border border-[#e2e8f0] hover:bg-gray-50 transition-all text-[#475569]">Clear</button>
+<button type="submit" class="px-10 py-3.5 rounded-xl font-bold bg-primary text-white hover:opacity-90 shadow-lg shadow-primary/20 transition-all">Publish Announcement</button>
 </div>
-</div>
+</form>
 </section>
 <section class="space-y-6">
 <div class="flex items-center justify-between">
@@ -173,107 +173,11 @@
 <th class="px-8 py-5 text-[11px] font-bold uppercase tracking-widest text-[#64748b] text-right">Actions</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-[#f1f5f9]">
-<tr class="hover:bg-[#f8fafc] transition-colors">
-<td class="px-8 py-6">
-<div class="flex flex-col gap-1">
-<span class="font-bold text-[#0f172a] text-base">Microsoft SDE Intern 2024 Hiring</span>
-<span class="text-sm text-[#94a3b8]">Posted on Oct 24, 2023 • 10:30 AM</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-[10px] px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-bold border border-blue-100 uppercase tracking-wider">Placement</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-medium text-[#475569]">2024 CS/IT</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<div class="size-2 rounded-full bg-emerald-500"></div>
-<span class="text-sm font-bold text-emerald-600">Live</span>
-</div>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex justify-end gap-3">
-<button class="p-2 hover:bg-white border border-transparent hover:border-[#e2e8f0] rounded-xl transition-all shadow-sm">
-<span class="material-symbols-outlined text-xl text-[#64748b]">edit</span>
-</button>
-<button class="p-2 hover:bg-red-50 border border-transparent hover:border-red-100 rounded-xl transition-all shadow-sm group">
-<span class="material-symbols-outlined text-xl text-[#64748b] group-hover:text-red-500">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-[#f8fafc] transition-colors">
-<td class="px-8 py-6">
-<div class="flex flex-col gap-1">
-<span class="font-bold text-[#0f172a] text-base">AI/ML Workshop by Dr. Sarah J.</span>
-<span class="text-sm text-[#94a3b8]">Posted on Oct 22, 2023 • 02:15 PM</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-[10px] px-3 py-1 rounded-full bg-orange-50 text-orange-600 font-bold border border-orange-100 uppercase tracking-wider">Workshop</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-medium text-[#475569]">All Batches</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<div class="size-2 rounded-full bg-primary/60"></div>
-<span class="text-sm font-bold text-primary">Scheduled</span>
-</div>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex justify-end gap-3">
-<button class="p-2 hover:bg-white border border-transparent hover:border-[#e2e8f0] rounded-xl transition-all shadow-sm">
-<span class="material-symbols-outlined text-xl text-[#64748b]">edit</span>
-</button>
-<button class="p-2 hover:bg-red-50 border border-transparent hover:border-red-100 rounded-xl transition-all shadow-sm group">
-<span class="material-symbols-outlined text-xl text-[#64748b] group-hover:text-red-500">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-[#f8fafc] transition-colors">
-<td class="px-8 py-6">
-<div class="flex flex-col gap-1">
-<span class="font-bold text-[#0f172a] text-base">Campus Maintenance Notice (Library)</span>
-<span class="text-sm text-[#94a3b8]">Posted on Oct 18, 2023 • 09:00 AM</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-[10px] px-3 py-1 rounded-full bg-slate-50 text-slate-600 font-bold border border-slate-100 uppercase tracking-wider">General News</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-medium text-[#475569]">Everyone</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<div class="size-2 rounded-full bg-emerald-500"></div>
-<span class="text-sm font-bold text-emerald-600">Live</span>
-</div>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex justify-end gap-3">
-<button class="p-2 hover:bg-white border border-transparent hover:border-[#e2e8f0] rounded-xl transition-all shadow-sm">
-<span class="material-symbols-outlined text-xl text-[#64748b]">edit</span>
-</button>
-<button class="p-2 hover:bg-red-50 border border-transparent hover:border-red-100 rounded-xl transition-all shadow-sm group">
-<span class="material-symbols-outlined text-xl text-[#64748b] group-hover:text-red-500">delete</span>
-</button>
-</div>
-</td>
-</tr>
+<tbody id="announcementTableBody" class="divide-y divide-[#f1f5f9]">
 </tbody>
 </table>
 <div class="px-8 py-6 border-t border-[#f1f5f9] flex items-center justify-between bg-white">
-<p class="text-sm text-[#64748b]">Showing <span class="font-bold text-[#0f172a]">1-3</span> of 24 announcements</p>
-<div class="flex gap-2">
-<button class="px-6 py-2 text-sm font-bold border border-[#e2e8f0] rounded-xl disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50 transition-all" disabled="">Previous</button>
-<button class="size-10 text-sm font-bold bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">1</button>
-<button class="size-10 text-sm font-bold border border-[#e2e8f0] text-[#64748b] rounded-xl flex items-center justify-center hover:bg-gray-50 transition-all">2</button>
-<button class="px-6 py-2 text-sm font-bold border border-[#e2e8f0] text-[#64748b] rounded-xl hover:bg-gray-50 transition-all">Next</button>
-</div>
+<p class="text-sm text-[#64748b]">Showing <span id="announcementCount" class="font-bold text-[#0f172a]">0</span> announcements</p>
 </div>
 </div>
 </section>
@@ -281,6 +185,101 @@
 </main>
 </div>
 <script>
+    async function loadAnnouncements() {
+        try {
+            const response = await fetch('http://localhost:3000/api/data/announcements');
+            const announcements = await response.json();
+            const tbody = document.getElementById('announcementTableBody');
+            tbody.innerHTML = '';
+            
+            announcements.forEach(ann => {
+                const date = new Date(ann.createdAt).toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-[#f8fafc] transition-colors';
+                row.innerHTML = `
+                    <td class="px-8 py-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-bold text-[#0f172a] text-base">${ann.title}</span>
+                            <span class="text-sm text-[#94a3b8]">Posted on ${date}</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-6">
+                        <span class="text-[10px] px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-bold border border-blue-100 uppercase tracking-wider">${ann.type}</span>
+                    </td>
+                    <td class="px-8 py-6">
+                        <span class="text-sm font-medium text-[#475569]">All Students</span>
+                    </td>
+                    <td class="px-8 py-6">
+                        <div class="flex items-center gap-2">
+                            <div class="size-2 rounded-full bg-emerald-500"></div>
+                            <span class="text-sm font-bold text-emerald-600">Live</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-6 text-right">
+                        <div class="flex justify-end gap-3">
+                            <button onclick="deleteAnnouncement('${ann._id}')" class="p-2 hover:bg-red-50 border border-transparent hover:border-red-100 rounded-xl transition-all shadow-sm group">
+                                <span class="material-symbols-outlined text-xl text-[#64748b] group-hover:text-red-500">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('announcementCount').textContent = announcements.length;
+        } catch (err) {
+            console.error('Error loading announcements:', err);
+        }
+    }
+    
+    async function deleteAnnouncement(id) {
+        if (!confirm('Are you sure you want to delete this announcement?')) return;
+        try {
+            await fetch(`http://localhost:3000/api/data/announcements/${id}`, { method: 'DELETE' });
+            loadAnnouncements();
+        } catch (err) {
+            alert('Error deleting announcement');
+        }
+    }
+    
+    document.getElementById('announcementForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const announcement = {
+            title: document.getElementById('titleInput').value,
+            content: document.getElementById('contentInput').value,
+            type: document.getElementById('typeInput').value,
+            postedBy: 'Admin'
+        };
+        
+        try {
+            const response = await fetch('http://localhost:3000/api/data/announcements', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(announcement)
+            });
+            
+            if (response.ok) {
+                alert('Announcement published successfully!');
+                document.getElementById('announcementForm').reset();
+                loadAnnouncements();
+            } else {
+                alert('Error publishing announcement');
+            }
+        } catch (err) {
+            alert('Error: ' + err.message);
+        }
+    });
+    
+    loadAnnouncements();
+    
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('role');
