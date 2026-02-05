@@ -425,7 +425,7 @@
         <p class="text-slate-400 text-xs font-medium">© 2024 Placement AI. All rights reserved.</p>
     </footer>
 
-    <script src="api.js"></script>
+    <script src="api.js?v=2"></script>
     <script src="nav.js"></script>
     <script>
         // State
@@ -670,26 +670,34 @@
             const list = document.getElementById('manage-skills-list');
             list.innerHTML = '';
 
-            if (!currentProfileData.skills || currentProfileData.skills.length === 0) {
+            const skills = currentProfileData.skills || [];
+
+            if (skills.length === 0) {
                 list.innerHTML = '<p class="text-slate-400 text-sm">No skills added yet.</p>';
             } else {
-                currentProfileData.skills.forEach(skill => {
+                skills.forEach(skill => {
                     const el = document.createElement('div');
                     el.className = 'px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center gap-2 font-bold text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700';
-                    el.innerHTML = `
-                        ${skill}
-                        <button onclick="deleteSkill('${skill}')" class="text-slate-400 hover:text-red-500 transition-colors flex items-center">
-                            <span class="material-symbols-outlined text-[16px]">remove_circle</span>
-                        </button>
-                     `;
+
+                    const textNode = document.createTextNode(skill);
+                    el.appendChild(textNode);
+
+                    const btn = document.createElement('button');
+                    btn.className = 'text-slate-400 hover:text-red-500 transition-colors flex items-center ml-2';
+                    btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">remove_circle</span>';
+                    btn.onclick = () => deleteSkill(skill, el);
+
+                    el.appendChild(btn);
                     list.appendChild(el);
                 });
             }
             openModal('modal-manage-skills');
         }
 
-        async function deleteSkill(skill) {
-            if (!confirm(`Remove ${skill}?`)) return;
+        async function deleteSkill(skill, elementToRemove) {
+            // Optimistic Update: Remove element immediately
+            if (elementToRemove) elementToRemove.remove();
+
             try {
                 const profile = await api.getStudentProfile(currentUser._id);
                 const currentSkills = profile.skills || [];
