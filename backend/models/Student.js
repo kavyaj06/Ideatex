@@ -17,7 +17,9 @@ const StudentSchema = new mongoose.Schema({
     screeningScores: {
         aptitude: { type: Number, default: 0 },
         coding: { type: Number, default: 0 },
-        gd: { type: Number, default: 0 }
+        verbal: { type: Number, default: 0 },
+        gd: { type: Number, default: 0 },
+        total: { type: Number, default: 0 }
     },
     projects: [{
         title: String,

@@ -68,12 +68,12 @@
             <h2 class="text-xl font-bold leading-tight tracking-tight">Placement Screening</h2>
         </div>
         <nav class="flex items-center gap-2 h-full">
-            <a class="px-5 h-full flex items-center text-sm font-semibold border-b-2 border-primary text-primary"
-                href="#">Aptitude</a>
-            <a class="px-5 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors border-b-2 border-transparent"
-                href="#">Coding</a>
-            <a class="px-5 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors border-b-2 border-transparent"
-                href="#">Verbal Ability</a>
+            <a class="section-tab px-5 h-full flex items-center text-sm font-semibold border-b-2 border-primary text-primary"
+                data-section="aptitude" href="#">Aptitude</a>
+            <a class="section-tab px-5 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors border-b-2 border-transparent"
+                data-section="coding" href="#">Coding</a>
+            <a class="section-tab px-5 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors border-b-2 border-transparent"
+                data-section="verbal" href="#">Verbal Ability</a>
         </nav>
         <div class="flex items-center gap-4">
             <div class="flex gap-2">
@@ -99,11 +99,11 @@
                 <div class="space-y-2">
                     <h1 class="text-base font-semibold">Section Progress</h1>
                     <div class="flex items-center justify-between text-sm">
-                        <span class="text-slate-500 dark:text-[#9dabb9]">5 of 15 Answered</span>
-                        <span class="text-primary font-bold">33%</span>
+                        <span class="text-slate-500 dark:text-[#9dabb9]" id="answered-count">0 of 15 Answered</span>
+                        <span class="text-primary font-bold" id="answered-percent">0%</span>
                     </div>
                     <div class="w-full h-2 bg-slate-100 dark:bg-[#283039] rounded-full overflow-hidden">
-                        <div class="bg-primary h-full w-[33%]"></div>
+                        <div class="bg-primary h-full w-[0%]" id="answered-bar"></div>
                     </div>
                 </div>
                 <div class="space-y-3">
@@ -112,21 +112,21 @@
                         <div class="flex-1 flex flex-col items-center gap-1">
                             <div
                                 class="w-full h-14 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-[#283039] border border-slate-200 dark:border-[#384451]">
-                                <span class="text-2xl font-bold font-mono">00</span>
+                                <span class="text-2xl font-bold font-mono" id="time-hours">00</span>
                             </div>
                             <span class="text-[10px] text-slate-500 uppercase font-medium">Hours</span>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-1">
                             <div
                                 class="w-full h-14 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/30">
-                                <span class="text-2xl font-bold font-mono text-primary">45</span>
+                                <span class="text-2xl font-bold font-mono text-primary" id="time-minutes">30</span>
                             </div>
                             <span class="text-[10px] text-primary uppercase font-bold">Minutes</span>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-1">
                             <div
                                 class="w-full h-14 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-[#283039] border border-slate-200 dark:border-[#384451]">
-                                <span class="text-2xl font-bold font-mono">18</span>
+                                <span class="text-2xl font-bold font-mono" id="time-seconds">00</span>
                             </div>
                             <span class="text-[10px] text-slate-500 uppercase font-medium">Seconds</span>
                         </div>
@@ -134,65 +134,19 @@
                 </div>
                 <div class="space-y-4">
                     <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Question Palette</p>
-                    <div class="grid grid-cols-5 gap-2">
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-primary text-white cursor-pointer ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-background-dark">
-                            12</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            01</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            02</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            03</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            04</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            05</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            06</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            07</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            08</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            09</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            10</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-emerald-500 text-white cursor-pointer">
-                            11</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-slate-100 dark:bg-[#283039] text-slate-400 cursor-pointer">
-                            13</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-slate-100 dark:bg-[#283039] text-slate-400 cursor-pointer">
-                            14</div>
-                        <div
-                            class="aspect-square flex items-center justify-center text-xs font-bold rounded-lg bg-amber-500 text-white cursor-pointer">
-                            15</div>
-                    </div>
+                    <div class="grid grid-cols-5 gap-2" id="question-palette"></div>
                     <div class="pt-4 space-y-2 border-t border-slate-100 dark:border-slate-800">
                         <div class="flex items-center gap-2 text-xs">
                             <span class="size-3 rounded bg-emerald-500"></span>
-                            <span class="text-slate-500">Answered (11)</span>
+                            <span class="text-slate-500" id="legend-answered">Answered (0)</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs">
                             <span class="size-3 rounded bg-amber-500"></span>
-                            <span class="text-slate-500">Marked for Review (1)</span>
+                            <span class="text-slate-500" id="legend-review">Marked for Review (0)</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs">
                             <span class="size-3 rounded bg-slate-100 dark:bg-[#283039]"></span>
-                            <span class="text-slate-500">Not Visited (3)</span>
+                            <span class="text-slate-500" id="legend-not-visited">Not Visited (15)</span>
                         </div>
                     </div>
                 </div>
@@ -291,31 +245,31 @@
             <footer
                 class="shrink-0 h-20 bg-white dark:bg-background-dark px-10 flex items-center justify-between border-t border-slate-200 dark:border-[#283039] z-50">
                 <div class="flex items-center gap-4">
-                    <button
+                    <button id="quiz-prev"
                         class="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-all">
                         <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                         Previous
                     </button>
-                    <button
+                    <button id="quiz-next"
                         class="flex items-center gap-2 px-8 py-2.5 rounded-lg bg-primary hover:bg-opacity-90 text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all">
                         Save &amp; Next
                         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </button>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button
+                    <button id="quiz-mark"
                         class="flex items-center gap-2 px-4 py-2 text-slate-500 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-500/10 rounded-lg text-sm font-medium transition-all group">
                         <span class="material-symbols-outlined text-[20px] group-hover:fill-current">bookmark</span>
                         Mark for Review
                     </button>
                     <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
-                    <button
+                    <button id="quiz-clear"
                         class="px-4 py-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg text-sm font-medium transition-all">
                         Clear Response
                     </button>
                 </div>
                 <div class="flex items-center">
-                    <button
+                    <button id="quiz-submit"
                         class="flex items-center gap-2 px-8 py-2.5 rounded-lg bg-primary text-white hover:bg-opacity-90 text-sm font-bold shadow-lg shadow-primary/20 transition-all">
                         <span class="material-symbols-outlined text-[18px]">send</span>
                         Submit Final Test
@@ -327,28 +281,335 @@
 
     <script src="api.js"></script>
     <script>
+        const TOTAL_QUESTIONS = 15;
+        const SECTION_SIZE = 5;
+        const TOTAL_SECONDS = 30 * 60;
         const urlParams = new URL(window.location.href).searchParams;
-        const section = urlParams.get('section') || 'aptitude';
         const user = JSON.parse(localStorage.getItem('user'));
 
-        // Update UI based on section
-        document.querySelector('h2.text-xl').innerText = section.charAt(0).toUpperCase() + section.slice(1) + ' Screening';
-        document.querySelector('nav a.text-primary').innerText = section.charAt(0).toUpperCase() + section.slice(1);
+        const sectionTabs = Array.from(document.querySelectorAll('.section-tab'));
+        const questionTitle = document.querySelector('h3.text-3xl');
+        const questionText = document.querySelector('.p-6.bg-white p');
+        const optionsContainer = document.querySelector('.grid.grid-cols-1.gap-4');
+        const submitBtn = document.getElementById('quiz-submit');
+        const nextBtn = document.getElementById('quiz-next');
+        const prevBtn = document.getElementById('quiz-prev');
+        const answeredCount = document.getElementById('answered-count');
+        const answeredPercent = document.getElementById('answered-percent');
+        const answeredBar = document.getElementById('answered-bar');
+        const palette = document.getElementById('question-palette');
+        const legendAnswered = document.getElementById('legend-answered');
+        const legendReview = document.getElementById('legend-review');
+        const legendNotVisited = document.getElementById('legend-not-visited');
+        const timeHours = document.getElementById('time-hours');
+        const timeMinutes = document.getElementById('time-minutes');
+        const timeSeconds = document.getElementById('time-seconds');
+        const markReviewBtn = document.getElementById('quiz-mark');
+        const clearBtn = document.getElementById('quiz-clear');
 
-        // Submit Logic
-        const submitBtn = document.querySelectorAll('button').item(document.querySelectorAll('button').length - 1);
-        submitBtn.onclick = async () => {
+        const questions = {
+            aptitude: [
+                {
+                    title: 'Question 1: Number Series',
+                    text: 'Find the next number in the series: 2, 6, 12, 20, 30, ?'
+                },
+                {
+                    title: 'Question 2: Percentages',
+                    text: 'A product marked at $120 is sold with a 20% discount. What is the selling price?'
+                },
+                {
+                    title: 'Question 3: Work & Time',
+                    text: 'A completes a task in 10 days, B completes the same in 15 days. How many days together?'
+                },
+                {
+                    title: 'Question 4: Ratios',
+                    text: 'The ratio of boys to girls in a class is 3:5. If there are 24 boys, how many girls?'
+                },
+                {
+                    title: 'Question 5: Probability',
+                    text: 'A fair die is rolled once. What is the probability of getting a number greater than 4?'
+                }
+            ],
+            coding: [
+                {
+                    title: 'Question 6: Arrays',
+                    text: 'Which method adds an element to the end of a JavaScript array?'
+                },
+                {
+                    title: 'Question 7: Complexity',
+                    text: 'What is the time complexity of binary search on a sorted array?'
+                },
+                {
+                    title: 'Question 8: Loops',
+                    text: 'How many times does the loop run? for (let i=0; i<5; i+=2)'
+                },
+                {
+                    title: 'Question 9: Strings',
+                    text: 'What does "split(\" \" )" return on the string "hello world"?'
+                },
+                {
+                    title: 'Question 10: Functions',
+                    text: 'Which keyword is used to return a value from a function in JavaScript?'
+                }
+            ],
+            verbal: [
+                {
+                    title: 'Question 11: Synonyms',
+                    text: 'Choose the synonym of "rapid":'
+                },
+                {
+                    title: 'Question 12: Antonyms',
+                    text: 'Choose the antonym of "scarce":'
+                },
+                {
+                    title: 'Question 13: Grammar',
+                    text: 'Identify the correct sentence:'
+                },
+                {
+                    title: 'Question 14: Fill in the blank',
+                    text: 'She has been working here _____ 2021.'
+                },
+                {
+                    title: 'Question 15: Comprehension',
+                    text: 'The main idea of a paragraph is also known as its ____.'
+                }
+            ]
+        };
+
+        const options = {
+            aptitude: [
+                ['36', '40', '42', '48'],
+                ['$96', '$100', '$108', '$110'],
+                ['5 days', '6 days', '7 days', '8 days'],
+                ['32', '36', '40', '44'],
+                ['1/3', '1/2', '1/6', '2/3']
+            ],
+            coding: [
+                ['push()', 'pop()', 'shift()', 'unshift()'],
+                ['O(n)', 'O(log n)', 'O(n log n)', 'O(1)'],
+                ['2', '3', '4', '5'],
+                ['Array of words', 'Array of chars', 'String', 'Number'],
+                ['break', 'return', 'exit', 'yield']
+            ],
+            verbal: [
+                ['slow', 'quick', 'late', 'weak'],
+                ['plentiful', 'rare', 'few', 'scant'],
+                ['He go to school.', 'He goes to school.', 'He going school.', 'He gone school.'],
+                ['since', 'for', 'from', 'by'],
+                ['topic', 'title', 'summary', 'point']
+            ]
+        };
+
+        const state = {
+            section: 'aptitude',
+            index: 0,
+            answers: Array(TOTAL_QUESTIONS).fill(null),
+            review: Array(TOTAL_QUESTIONS).fill(false),
+            visited: Array(TOTAL_QUESTIONS).fill(false)
+        };
+
+        function getGlobalIndex(section, localIndex) {
+            const offset = section === 'aptitude' ? 0 : section === 'coding' ? 5 : 10;
+            return offset + localIndex;
+        }
+
+        function setActiveTab(section) {
+            sectionTabs.forEach((tab) => {
+                const isActive = tab.dataset.section === section;
+                tab.classList.toggle('text-primary', isActive);
+                tab.classList.toggle('font-semibold', isActive);
+                tab.classList.toggle('border-primary', isActive);
+                tab.classList.toggle('text-slate-500', !isActive);
+                tab.classList.toggle('border-transparent', !isActive);
+            });
+        }
+
+        function renderQuestion() {
+            const sectionQuestions = questions[state.section];
+            const sectionOptions = options[state.section];
+            const q = sectionQuestions[state.index];
+            const globalIndex = getGlobalIndex(state.section, state.index);
+
+            state.visited[globalIndex] = true;
+
+            questionTitle.textContent = q.title;
+            questionText.textContent = q.text;
+            optionsContainer.innerHTML = '';
+
+            sectionOptions[state.index].forEach((optionText, optionIndex) => {
+                const id = `q-${globalIndex}-opt-${optionIndex}`;
+                const isSelected = state.answers[globalIndex] === optionIndex;
+                const wrapper = document.createElement('label');
+                wrapper.className = `group flex items-center p-5 rounded-2xl border-2 ${isSelected ? 'border-primary bg-primary/5' : 'border-slate-200 dark:border-[#283039] bg-white dark:bg-[#111418]'} cursor-pointer transition-all hover:border-primary/40 hover:bg-slate-50 dark:hover:bg-slate-900/50`;
+                wrapper.htmlFor = id;
+                wrapper.innerHTML = `
+                    <div class="size-7 border-2 ${isSelected ? 'border-primary' : 'border-slate-300'} rounded-full flex items-center justify-center shrink-0">
+                        <div class="size-3.5 ${isSelected ? 'bg-primary' : 'bg-transparent'} rounded-full"></div>
+                    </div>
+                    <div class="ml-5 flex-1">
+                        <p class="text-slate-800 dark:text-slate-200 text-lg ${isSelected ? 'font-bold' : 'font-medium'}">${optionText}</p>
+                    </div>
+                    <span class="text-slate-400 group-hover:text-primary transition-colors font-bold uppercase text-xs tracking-widest">${String.fromCharCode(65 + optionIndex)}</span>
+                `;
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `question-${globalIndex}`;
+                input.id = id;
+                input.className = 'hidden';
+                input.checked = isSelected;
+                input.addEventListener('change', () => {
+                    state.answers[globalIndex] = optionIndex;
+                    updateProgress();
+                    renderQuestion();
+                });
+
+                wrapper.appendChild(input);
+                optionsContainer.appendChild(wrapper);
+            });
+
+            updatePalette();
+        }
+
+        function updateProgress() {
+            const answered = state.answers.filter((val) => val !== null).length;
+            const percent = Math.round((answered / TOTAL_QUESTIONS) * 100);
+            answeredCount.textContent = `${answered} of ${TOTAL_QUESTIONS} Answered`;
+            answeredPercent.textContent = `${percent}%`;
+            answeredBar.style.width = `${percent}%`;
+        }
+
+        function updatePalette() {
+            palette.innerHTML = '';
+            let answered = 0;
+            let review = 0;
+            let notVisited = 0;
+
+            for (let i = 0; i < TOTAL_QUESTIONS; i += 1) {
+                const isAnswered = state.answers[i] !== null;
+                const isReview = state.review[i];
+                const isVisited = state.visited[i];
+
+                if (isAnswered) answered += 1;
+                if (isReview) review += 1;
+                if (!isVisited) notVisited += 1;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                const classes = [
+                    'aspect-square',
+                    'flex',
+                    'items-center',
+                    'justify-center',
+                    'text-xs',
+                    'font-bold',
+                    'rounded-lg',
+                    'cursor-pointer'
+                ];
+
+                if (!isVisited) {
+                    classes.push('bg-slate-100', 'dark:bg-[#283039]', 'text-slate-400');
+                } else if (isReview) {
+                    classes.push('bg-amber-500', 'text-white');
+                } else if (isAnswered) {
+                    classes.push('bg-emerald-500', 'text-white');
+                } else {
+                    classes.push('bg-primary', 'text-white');
+                }
+
+                btn.className = classes.join(' ');
+                btn.textContent = String(i + 1).padStart(2, '0');
+                btn.addEventListener('click', () => {
+                    if (i < 5) {
+                        state.section = 'aptitude';
+                        state.index = i;
+                    } else if (i < 10) {
+                        state.section = 'coding';
+                        state.index = i - 5;
+                    } else {
+                        state.section = 'verbal';
+                        state.index = i - 10;
+                    }
+                    setActiveTab(state.section);
+                    renderQuestion();
+                });
+
+                palette.appendChild(btn);
+            }
+
+            legendAnswered.textContent = `Answered (${answered})`;
+            legendReview.textContent = `Marked for Review (${review})`;
+            legendNotVisited.textContent = `Not Visited (${notVisited})`;
+        }
+
+        function changeQuestion(step) {
+            const maxIndex = SECTION_SIZE - 1;
+            state.index = Math.min(Math.max(state.index + step, 0), maxIndex);
+            renderQuestion();
+        }
+
+        function startTimer() {
+            let remaining = TOTAL_SECONDS;
+
+            function updateTimer() {
+                const hours = Math.floor(remaining / 3600);
+                const minutes = Math.floor((remaining % 3600) / 60);
+                const seconds = remaining % 60;
+
+                timeHours.textContent = String(hours).padStart(2, '0');
+                timeMinutes.textContent = String(minutes).padStart(2, '0');
+                timeSeconds.textContent = String(seconds).padStart(2, '0');
+
+                if (remaining <= 0) {
+                    submitBtn.click();
+                    return;
+                }
+
+                remaining -= 1;
+                setTimeout(updateTimer, 1000);
+            }
+
+            updateTimer();
+        }
+
+        function calculateScores() {
+            const scores = {
+                aptitude: 0,
+                coding: 0,
+                verbal: 0
+            };
+
+            const sectionKeys = ['aptitude', 'coding', 'verbal'];
+            sectionKeys.forEach((key, sectionIndex) => {
+                const start = sectionIndex * SECTION_SIZE;
+                const end = start + SECTION_SIZE;
+                const answered = state.answers.slice(start, end).filter((val) => val !== null).length;
+                if (answered === 0) {
+                    scores[key] = 0;
+                    return;
+                }
+                const ratio = answered / SECTION_SIZE;
+                scores[key] = Math.round(40 + ratio * 52);
+            });
+
+            return scores;
+        }
+
+        async function submitResults() {
             if (!user) return alert('Please login first');
 
             submitBtn.innerText = 'Submitting...';
+            submitBtn.disabled = true;
 
-            // For demo, generate a high score (80-95)
-            const score = Math.floor(Math.random() * 15) + 80;
+            const scores = calculateScores();
 
             try {
                 const currentData = await api.getStudentProfile(user._id);
                 const updatedScores = { ...currentData.screeningScores };
-                updatedScores[section.toLowerCase()] = score;
+                updatedScores.aptitude = scores.aptitude;
+                updatedScores.coding = scores.coding;
+                updatedScores.verbal = scores.verbal;
+                updatedScores.total = Math.round((scores.aptitude + scores.coding + scores.verbal) / 3);
 
                 await fetch(`http://localhost:3000/api/data/students/${user._id}`, {
                     method: 'PUT',
@@ -356,14 +617,57 @@
                     body: JSON.stringify({ screeningScores: updatedScores })
                 });
 
-                alert(`${section} Screening Completed! Score: ${score}%`);
+                alert(`Assessment Completed! Total Score: ${updatedScores.total}%`);
                 window.location.href = 'results.html';
             } catch (err) {
                 console.error(err);
                 alert('Submission failed');
+                submitBtn.disabled = false;
                 submitBtn.innerText = 'Submit Final Test';
             }
-        };
+        }
+
+        function init() {
+            const urlSection = urlParams.get('section');
+            if (urlSection && questions[urlSection]) {
+                state.section = urlSection;
+            }
+
+            sectionTabs.forEach((tab) => {
+                tab.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    state.section = tab.dataset.section;
+                    state.index = 0;
+                    setActiveTab(state.section);
+                    renderQuestion();
+                });
+            });
+
+            prevBtn.addEventListener('click', () => changeQuestion(-1));
+            nextBtn.addEventListener('click', () => changeQuestion(1));
+            submitBtn.addEventListener('click', submitResults);
+
+            markReviewBtn.addEventListener('click', () => {
+                const globalIndex = getGlobalIndex(state.section, state.index);
+                state.review[globalIndex] = !state.review[globalIndex];
+                updatePalette();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                const globalIndex = getGlobalIndex(state.section, state.index);
+                state.answers[globalIndex] = null;
+                updateProgress();
+                renderQuestion();
+            });
+
+            setActiveTab(state.section);
+            updateProgress();
+            updatePalette();
+            renderQuestion();
+            startTimer();
+        }
+
+        init();
     </script>
 </body>
 

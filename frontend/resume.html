@@ -70,39 +70,30 @@
 </head>
 
 <body class="bg-background-light text-slate-900 min-h-screen flex flex-col">
-    <header class="w-full border-b border-slate-200 px-6 lg:px-20 py-3 bg-white sticky top-0 z-50">
-        <div class="max-w-[1400px] mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="text-primary">
-                    <svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                            fill="currentColor" fill-rule="evenodd"></path>
-                    </svg>
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="size-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-none tracking-tight">Placement AI</h1>
+                    </div>
                 </div>
-                <h2 class="text-xl font-bold leading-tight tracking-tight text-slate-800">CampusAI</h2>
-            </div>
-            <div class="flex items-center gap-8">
-                <nav class="hidden md:flex items-center gap-8">
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Dashboard</a>
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Profile</a>
-                    <a class="text-sm font-medium text-primary relative after:content-[''] after:absolute after:-bottom-[19px] after:left-0 after:w-full after:h-0.5 after:bg-primary"
-                        href="#">Resume</a>
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Screening</a>
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Results</a>
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Progress</a>
-                    <a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">News</a>
-                </nav>
-                <div class="flex items-center gap-6">
+                <div class="hidden md:flex items-center space-x-1">
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="studentdashboard.html">Dashboard</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="profile.html">Profile</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-semibold nav-link-active" href="resume.html">Resume</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="screening.html">Screening</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="results.html">Results</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="news.html">News</a>
+                </div>
+                <div class="flex items-center">
                     <button
-                        class="text-sm font-medium text-slate-500 hover:text-red-500 transition-colors">Logout</button>
-                    <div
-                        class="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm border border-primary/20 shadow-sm">
-                        JD</div>
+                        class="px-5 py-2 text-sm font-bold text-primary border-2 border-primary rounded-xl hover:bg-primary hover:text-white transition-all">
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>
@@ -168,33 +159,21 @@
                     <h3 class="text-lg font-bold text-primary mb-5">Skill Gap Analysis</h3>
                     <div class="space-y-6">
                         <div>
-                            <div class="flex justify-between text-sm mb-2">
+                            <div class="flex justify-between text-sm">
                                 <span class="font-semibold text-slate-700">Frontend (React, Tailwind)</span>
                                 <span class="text-primary font-bold">95%</span>
                             </div>
-                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-primary rounded-full transition-all duration-500"
-                                    style="width: 95%"></div>
-                            </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-sm mb-2">
+                            <div class="flex justify-between text-sm">
                                 <span class="font-semibold text-slate-700">Backend (Node.js, SQL)</span>
                                 <span class="text-primary font-bold">70%</span>
                             </div>
-                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-primary rounded-full transition-all duration-500"
-                                    style="width: 70%"></div>
-                            </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-sm mb-2">
+                            <div class="flex justify-between text-sm">
                                 <span class="font-semibold text-slate-700">System Design</span>
                                 <span class="text-primary font-bold">45%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-primary rounded-full transition-all duration-500"
-                                    style="width: 45%"></div>
                             </div>
                         </div>
                     </div>
@@ -419,12 +398,9 @@
                 if (skillGapsContainer) {
                     skillGapsContainer.innerHTML = analysis.skillGaps.map(skill => `
                         <div>
-                            <div class="flex justify-between text-sm mb-2">
+                            <div class="flex justify-between text-sm">
                                 <span class="font-semibold text-slate-700">${skill.skill}</span>
                                 <span class="text-primary font-bold">${skill.match}%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: ${skill.match}%"></div>
                             </div>
                         </div>
                     `).join('');

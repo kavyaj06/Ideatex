@@ -59,18 +59,16 @@
             </div>
             <nav class="hidden md:flex items-center h-full">
                 <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">Dashboard</a>
+                    href="studentdashboard.html">Dashboard</a>
                 <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">Profile</a>
+                    href="profile.html">Profile</a>
                 <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">Resume</a>
+                    href="resume.html">Resume</a>
                 <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">Screening</a>
-                <a class="px-4 h-full flex items-center text-sm font-medium nav-tab-active" href="#">Results</a>
+                    href="screening.html">Screening</a>
+                <a class="px-4 h-full flex items-center text-sm font-medium nav-tab-active" href="results.html">Results</a>
                 <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">Progress</a>
-                <a class="px-4 h-full flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                    href="#">News</a>
+                    href="news.html">News</a>
             </nav>
             <div class="flex items-center">
                 <button
@@ -87,34 +85,20 @@
                 <p class="text-slate-500 mt-2">Personalized career guidance based on your cognitive and technical
                     performance.</p>
             </div>
-            <div class="flex items-center gap-3">
-                <button
-                    class="flex items-center gap-2 bg-white text-primary border-2 border-primary px-4 py-2.5 rounded-xl font-bold hover:bg-purple-50 transition-all text-sm">
-                    <span class="material-symbols-outlined text-xl">upload</span>
-                    Upload
-                </button>
-                <button
-                    class="flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-accent transition-all shadow-lg shadow-primary/20 text-sm">
-                    <span class="material-symbols-outlined text-xl">download</span>
-                    Download Detailed Report
-                </button>
-            </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
             <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
                 <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Overall Percentile</p>
                 <div class="flex items-baseline gap-1">
-                    <h3 class="text-4xl font-bold text-slate-900">94.2</h3>
+                    <h3 class="text-4xl font-bold text-slate-900" id="overall-percentile">0.0</h3>
                     <span class="text-slate-400 text-lg font-medium">%</span>
                 </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full mt-6 overflow-hidden">
-                    <div class="bg-primary h-full w-[94.2%]"></div>
-                </div>
+
             </div>
             <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
                 <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Aptitude Score</p>
                 <div class="flex items-baseline gap-1">
-                    <h3 class="text-4xl font-bold text-slate-900">88</h3>
+                    <h3 class="text-4xl font-bold text-slate-900" id="aptitude-score">0</h3>
                     <span class="text-slate-400 text-lg font-medium">/100</span>
                 </div>
                 <div
@@ -124,15 +108,19 @@
                 </div>
             </div>
             <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Coding Proficiency</p>
-                <h3 class="text-3xl font-bold text-slate-900">Advanced</h3>
-                <div class="w-full bg-slate-100 h-2 rounded-full mt-7 overflow-hidden">
-                    <div class="bg-primary h-full w-[85%]"></div>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Coding Score</p>
+                <div class="flex items-baseline gap-1">
+                    <h3 class="text-3xl font-bold text-slate-900" id="coding-score">0</h3>
+                    <span class="text-slate-400 text-lg font-medium">/100</span>
                 </div>
+
             </div>
             <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
-                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Communication</p>
-                <h3 class="text-4xl font-bold text-slate-900">B2+</h3>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Verbal Ability Score</p>
+                <div class="flex items-baseline gap-1">
+                    <h3 class="text-4xl font-bold text-slate-900" id="verbal-score">0</h3>
+                    <span class="text-slate-400 text-lg font-medium">/100</span>
+                </div>
                 <div class="mt-6 flex gap-2">
                     <span class="px-2 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded">NEEDS
                         PRACTICE</span>
@@ -209,69 +197,33 @@
                     <div class="space-y-6">
                         <div class="space-y-2">
                             <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
-                                <span class="text-slate-500">Logical Reasoning</span>
-                                <span class="text-primary">92%</span>
+                                <span class="text-slate-500">Aptitude</span>
+                                <span class="text-primary" id="skill-aptitude">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-primary h-full w-[92%] rounded-full"></div>
-                            </div>
+
                         </div>
                         <div class="space-y-2">
                             <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
                                 <span class="text-slate-500">Verbal Ability</span>
-                                <span class="text-primary">74%</span>
+                                <span class="text-primary" id="skill-verbal">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-primary h-full w-[74%] rounded-full"></div>
-                            </div>
+
                         </div>
                         <div class="space-y-2">
                             <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
-                                <span class="text-slate-500">Technical MCQs</span>
-                                <span class="text-primary">88%</span>
+                                <span class="text-slate-500">Coding</span>
+                                <span class="text-primary" id="skill-coding">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-primary h-full w-[88%] rounded-full"></div>
-                            </div>
+
                         </div>
                         <div class="space-y-2">
                             <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider">
-                                <span class="text-slate-500">Coding (Python)</span>
-                                <span class="text-primary">95%</span>
+                                <span class="text-slate-500">Overall</span>
+                                <span class="text-primary" id="skill-overall">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-primary h-full w-[95%] rounded-full"></div>
-                            </div>
+
                         </div>
                     </div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <h3 class="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wide flex items-center gap-2">
-                        <span class="material-symbols-outlined text-amber-500 text-lg">lightbulb</span>
-                        Areas to Improve
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex gap-3 p-3 bg-slate-50 rounded-xl">
-                            <span class="material-symbols-outlined text-amber-500 text-sm">warning</span>
-                            <p class="text-[11px] text-slate-600 leading-normal">Practice group discussion skills. Peer
-                                feedback was slightly below average.</p>
-                        </div>
-                        <div class="flex gap-3 p-3 bg-slate-50 rounded-xl">
-                            <span class="material-symbols-outlined text-amber-500 text-sm">warning</span>
-                            <p class="text-[11px] text-slate-600 leading-normal">Revise OS &amp; Networking fundamentals
-                                for core technical rounds.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-purple-600 p-6 rounded-2xl text-white shadow-lg shadow-purple-200">
-                    <h3 class="font-bold text-white mb-2 text-sm">Start Prep</h3>
-                    <p class="text-[11px] text-purple-100 mb-4 leading-relaxed">
-                        Based on your profile, we recommend starting interview preparation modules.
-                    </p>
-                    <button
-                        class="w-full bg-white text-purple-600 font-bold py-2 rounded-lg text-xs hover:bg-purple-50 transition-colors">
-                        Get Started
-                    </button>
                 </div>
             </div>
         </div>
@@ -282,48 +234,80 @@
     <script src="api.js"></script>
     <script src="nav.js"></script>
     <script>
+        const dummyScores = {
+            aptitude: 82,
+            coding: 76,
+            verbal: 69,
+            total: 76
+        };
+
+        function applyScores(scores) {
+            const aptitude = scores.aptitude || 0;
+            const coding = scores.coding || 0;
+            const verbal = scores.verbal || 0;
+            const overall = scores.total || Math.round((aptitude + coding + verbal) / 3);
+
+            const overallElem = document.getElementById('overall-percentile');
+            const overallBar = document.getElementById('overall-bar');
+            if (overallElem) overallElem.innerText = overall.toFixed(1);
+            if (overallBar) overallBar.style.width = `${overall}%`;
+
+            const aptitudeElem = document.getElementById('aptitude-score');
+            if (aptitudeElem) aptitudeElem.innerText = aptitude;
+
+            const codingElem = document.getElementById('coding-score');
+            const codingBar = document.getElementById('coding-bar');
+            if (codingElem) codingElem.innerText = coding;
+            if (codingBar) codingBar.style.width = `${coding}%`;
+
+            const verbalElem = document.getElementById('verbal-score');
+            if (verbalElem) verbalElem.innerText = verbal;
+
+            const skillApt = document.getElementById('skill-aptitude');
+            const skillAptBar = document.getElementById('skill-aptitude-bar');
+            if (skillApt) skillApt.innerText = `${aptitude}%`;
+            if (skillAptBar) skillAptBar.style.width = `${aptitude}%`;
+
+            const skillVerbal = document.getElementById('skill-verbal');
+            const skillVerbalBar = document.getElementById('skill-verbal-bar');
+            if (skillVerbal) skillVerbal.innerText = `${verbal}%`;
+            if (skillVerbalBar) skillVerbalBar.style.width = `${verbal}%`;
+
+            const skillCoding = document.getElementById('skill-coding');
+            const skillCodingBar = document.getElementById('skill-coding-bar');
+            if (skillCoding) skillCoding.innerText = `${coding}%`;
+            if (skillCodingBar) skillCodingBar.style.width = `${coding}%`;
+
+            const skillOverall = document.getElementById('skill-overall');
+            const skillOverallBar = document.getElementById('skill-overall-bar');
+            if (skillOverall) skillOverall.innerText = `${overall}%`;
+            if (skillOverallBar) skillOverallBar.style.width = `${overall}%`;
+        }
+
         async function loadResults() {
             const user = JSON.parse(localStorage.getItem('user'));
-            if (!user) return;
+            if (!user) {
+                applyScores(dummyScores);
+                return;
+            }
 
             try {
                 const profile = await api.getStudentProfile(user._id);
                 if (profile) {
                     const scores = profile.screeningScores || {};
-
-                    // Update Aptitude
-                    const aptVal = scores.aptitude || 0;
-                    const aptElem = document.querySelectorAll('h3.text-4xl')[1];
-                    if (aptElem) aptElem.innerText = aptVal;
-
-                    // Update Coding
-                    const codingVal = scores.coding || 0;
-                    const codingTextElem = document.querySelector('h3.text-3xl');
-                    if (codingTextElem) {
-                        codingTextElem.innerText = codingVal > 80 ? 'Advanced' : codingVal > 50 ? 'Intermediate' : 'Beginner';
-                    }
-                    const codingBar = document.querySelectorAll('.bg-primary.h-full')[1];
-                    if (codingBar) codingBar.style.width = codingVal + '%';
-
-                    // Update GD
-                    const gdVal = scores.gd || 0;
-                    const gdElem = document.querySelectorAll('h3.text-4xl')[2];
-                    if (gdElem) gdElem.innerText = gdVal > 80 ? 'A' : gdVal > 60 ? 'B+' : 'B';
-
-                    // Update Skill Breakdown Bars
-                    const bars = document.querySelectorAll('.bg-primary.h-full.rounded-full');
-                    const values = [scores.logical || 85, scores.verbal || 70, scores.tech || 80, scores.coding || 75];
-                    bars.forEach((bar, i) => {
-                        if (values[i]) bar.style.width = values[i] + '%';
-                    });
-
-                    // Calculate and update Percentile (Simplified average for demo)
-                    const percentile = ((aptVal + codingVal + gdVal) / 3).toFixed(1);
-                    const pElem = document.querySelector('h3.text-4xl');
-                    if (pElem) pElem.innerText = percentile;
+                    const normalizedScores = {
+                        aptitude: scores.aptitude || 0,
+                        coding: scores.coding || 0,
+                        verbal: scores.verbal ?? scores.gd ?? 0,
+                        total: scores.total || 0
+                    };
+                    applyScores(normalizedScores);
+                } else {
+                    applyScores(dummyScores);
                 }
             } catch (err) {
                 console.error(err);
+                applyScores(dummyScores);
             }
         }
         loadResults();

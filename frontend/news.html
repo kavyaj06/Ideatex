@@ -64,18 +64,16 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-1">
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Dashboard</a>
+                        href="studentdashboard.html">Dashboard</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Profile</a>
+                        href="profile.html">Profile</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Resume</a>
+                        href="resume.html">Resume</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Screening</a>
+                        href="screening.html">Screening</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Results</a>
-                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Progress</a>
-                    <a class="px-4 h-16 flex items-center text-sm nav-link-active" href="#">News</a>
+                        href="results.html">Results</a>
+                    <a class="px-4 h-16 flex items-center text-sm nav-link-active" href="news.html">News</a>
                 </div>
                 <div class="flex items-center">
                     <button
@@ -92,17 +90,17 @@
             <p class="text-slate-500 dark:text-slate-400 mt-2 text-lg">Stay updated with upcoming placements and
                 announcements.</p>
         </header>
-        <div class="flex flex-wrap gap-2 mb-10">
-            <button
-                class="px-6 py-2 bg-primary text-white rounded-full text-sm font-bold shadow-md shadow-primary/20">All</button>
-            <button
-                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Placements</button>
-            <button
-                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Assessment</button>
-            <button
-                class="px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">General</button>
+        <div class="flex flex-wrap gap-2 mb-10" id="news-filters">
+            <button data-filter="all"
+                class="news-filter px-6 py-2 bg-primary text-white rounded-full text-sm font-bold shadow-md shadow-primary/20">All</button>
+            <button data-filter="placements"
+                class="news-filter px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Placements</button>
+            <button data-filter="assessment"
+                class="news-filter px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">Assessment</button>
+            <button data-filter="general"
+                class="news-filter px-6 py-2 bg-white dark:bg-[#111418] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-bold hover:bg-slate-50 transition-colors">General</button>
         </div>
-        <div class="space-y-6">
+        <div class="space-y-6" id="news-list">
             <div
                 class="bg-white dark:bg-[#111418] border-2 border-primary/20 rounded-2xl p-6 md:p-8 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0">
@@ -230,6 +228,88 @@
     <script src="api.js"></script>
     <script src="nav.js"></script>
     <script>
+        const filterButtons = Array.from(document.querySelectorAll('.news-filter'));
+        const newsList = document.getElementById('news-list');
+        let allAnnouncements = [];
+        let activeFilter = 'all';
+
+        const colorStyles = {
+            'Placement': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
+            'Workshop': { bg: '#DBEAFE', icon: '#3b82f6', text: '#2563EB', icon_name: 'school' },
+            'General News': { bg: '#F1F5F9', icon: '#64748b', text: '#475569', icon_name: 'newspaper' },
+            'Hackathon': { bg: '#E9D5FF', icon: '#a855f7', text: '#9333EA', icon_name: 'code' },
+            'Company Update': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
+            'Interview Schedule': { bg: '#FEF3C7', icon: '#f59e0b', text: '#D97706', icon_name: 'calendar_today' },
+            'Test Instruction': { bg: '#FCA5A5', icon: '#dc2626', text: '#991B1B', icon_name: 'assignment' },
+            'Assessment': { bg: '#FCA5A5', icon: '#dc2626', text: '#991B1B', icon_name: 'assignment' },
+            'Result': { bg: '#DBEAFE', icon: '#0284c7', text: '#0369a1', icon_name: 'check_circle' }
+        };
+
+        function getCategory(type) {
+            const value = (type || '').toLowerCase();
+            if (value.includes('placement') || value.includes('company') || value.includes('interview')) {
+                return 'placements';
+            }
+            if (value.includes('assessment') || value.includes('test')) {
+                return 'assessment';
+            }
+            return 'general';
+        }
+
+        function updateFilterButtons() {
+            filterButtons.forEach((button) => {
+                const isActive = button.dataset.filter === activeFilter;
+                button.classList.toggle('bg-primary', isActive);
+                button.classList.toggle('text-white', isActive);
+                button.classList.toggle('shadow-md', isActive);
+                button.classList.toggle('shadow-primary/20', isActive);
+                if (!isActive) {
+                    button.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                } else {
+                    button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                }
+            });
+        }
+
+        function renderAnnouncements() {
+            if (!newsList) return;
+            const filtered = activeFilter === 'all'
+                ? allAnnouncements
+                : allAnnouncements.filter((ann) => getCategory(ann.type) === activeFilter);
+
+            if (filtered.length === 0) {
+                newsList.innerHTML = '<p class="text-slate-500">No announcements available.</p>';
+                return;
+            }
+
+            newsList.innerHTML = filtered.map((ann) => {
+                const style = colorStyles[ann.type] || colorStyles['General News'];
+                const date = new Date(ann.createdAt).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+
+                return `
+                    <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="size-16 rounded-xl flex items-center justify-center shrink-0" style="background-color: ${style.bg}; color: ${style.icon};">
+                                <span class="material-symbols-outlined text-3xl">${style.icon_name}</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background-color: rgba(109, 40, 217, 0.1); color: ${style.text};">${ann.type}</span>
+                                    <span class="text-slate-400 text-xs font-medium">Posted ${date}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${ann.title}</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">${ann.content}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
         async function loadAnnouncements() {
             try {
                 const response = await fetch('http://localhost:3000/api/data/announcements');
@@ -238,64 +318,23 @@
                     return;
                 }
                 const announcements = await response.json();
-                console.log('Announcements loaded:', announcements.length);
-                const container = document.querySelector('.space-y-6');
-                
-                if (!container) {
-                    console.error('Container .space-y-6 not found');
-                    return;
-                }
-                
-                if (announcements.length === 0) {
-                    container.innerHTML = '<p class="text-slate-500">No announcements available.</p>';
-                    return;
-                } 
-                
-                const colorStyles = {
-                        'Placement': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
-                        'Workshop': { bg: '#DBEAFE', icon: '#3b82f6', text: '#2563EB', icon_name: 'school' },
-                        'General News': { bg: '#F1F5F9', icon: '#64748b', text: '#475569', icon_name: 'newspaper' },
-                        'Hackathon': { bg: '#E9D5FF', icon: '#a855f7', text: '#9333EA', icon_name: 'code' },
-                        'Company Update': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
-                        'Interview Schedule': { bg: '#FEF3C7', icon: '#f59e0b', text: '#D97706', icon_name: 'calendar_today' },
-                        'Test Instruction': { bg: '#FCA5A5', icon: '#dc2626', text: '#991B1B', icon_name: 'assignment' },
-                        'Result': { bg: '#DBEAFE', icon: '#0284c7', text: '#0369a1', icon_name: 'check_circle' }
-                    };
-                    
-                    container.innerHTML = announcements.map(ann => {
-                        const style = colorStyles[ann.type] || colorStyles['General News'];
-                        const date = new Date(ann.createdAt).toLocaleDateString('en-US', { 
-                            month: 'short', 
-                            day: 'numeric', 
-                            year: 'numeric'
-                        });
-                        
-                        return `
-                            <div class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="flex flex-col md:flex-row gap-6">
-                                    <div class="size-16 rounded-xl flex items-center justify-center shrink-0" style="background-color: ${style.bg}; color: ${style.icon};">
-                                        <span class="material-symbols-outlined text-3xl">${style.icon_name}</span>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="flex items-center gap-2 mb-2">
-                                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background-color: rgba(109, 40, 217, 0.1); color: ${style.text};">${ann.type}</span>
-                                            <span class="text-slate-400 text-xs font-medium">Posted ${date}</span>
-                                        </div>
-                                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${ann.title}</h3>
-                                        <p class="text-slate-600 dark:text-slate-400 mb-4">${ann.content}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
+                allAnnouncements = announcements;
+                renderAnnouncements();
             } catch (err) {
                 console.error('Error loading announcements:', err);
             }
         }
-        
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                activeFilter = button.dataset.filter;
+                updateFilterButtons();
+                renderAnnouncements();
+            });
+        });
+
+        updateFilterButtons();
         loadAnnouncements();
-        
-        // Refresh announcements every 30 seconds
         setInterval(loadAnnouncements, 30000);
     </script>
 </body>

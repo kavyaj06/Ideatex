@@ -63,19 +63,17 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-1">
-                    <a class="px-4 h-16 flex items-center text-sm font-semibold nav-link-active" href="#">Dashboard</a>
+                    <a class="px-4 h-16 flex items-center text-sm font-semibold nav-link-active" href="studentdashboard.html">Dashboard</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Profile</a>
+                        href="profile.html">Profile</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Resume</a>
+                        href="resume.html">Resume</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Screening</a>
+                        href="screening.html">Screening</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Results</a>
+                        href="results.html">Results</a>
                     <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">Progress</a>
-                    <a class="px-4 h-16 flex items-center text-sm font-medium text-slate-500 hover:text-primary transition-colors"
-                        href="#">News</a>
+                        href="news.html">News</a>
                 </div>
                 <div class="flex items-center">
                     <button
@@ -119,16 +117,11 @@
                         <span class="material-symbols-outlined text-[32px]">article</span>
                     </div>
                 </div>
-                <div>
-                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
-                        <div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
-                    </div>
-                    <div class="flex justify-between items-center mt-3">
-                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium italic">Your resume is ATS
-                            optimized and ready.</p>
-                        <button onclick="window.location.href='resume.html'"
-                            class="text-primary text-xs font-bold hover:underline">Improve Score</button>
-                    </div>
+                <div class="flex justify-between items-center mt-3">
+                    <p class="text-slate-500 dark:text-slate-400 text-xs font-medium italic">Your resume is ATS
+                        optimized and ready.</p>
+                    <button onclick="window.location.href='resume.html'"
+                        class="text-primary text-xs font-bold hover:underline">Improve Score</button>
                 </div>
             </div>
         </div>
@@ -155,11 +148,9 @@
                                     Quant</p>
                             </div>
                         </div>
-                        <span class="text-xl font-black text-slate-900 dark:text-white">92%</span>
+                        <span class="text-xl font-black text-slate-900 dark:text-white" id="dashboard-aptitude-score">0%</span>
                     </div>
-                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div class="h-full bg-orange-500 rounded-full" style="width: 92%;"></div>
-                    </div>
+
                 </div>
                 <div
                     class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-md transition-shadow">
@@ -174,11 +165,9 @@
                                 </p>
                             </div>
                         </div>
-                        <span class="text-xl font-black text-slate-900 dark:text-white">78%</span>
+                        <span class="text-xl font-black text-slate-900 dark:text-white" id="dashboard-coding-score">0%</span>
                     </div>
-                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div class="h-full bg-primary rounded-full" style="width: 78%;"></div>
-                    </div>
+
                 </div>
                 <div
                     class="bg-white dark:bg-[#111418] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-md transition-shadow">
@@ -189,16 +178,14 @@
                                 <span class="material-symbols-outlined">groups</span>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Communication</h4>
-                                <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Group
-                                    Discussion</p>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Verbal Ability</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Vocabulary
+                                    &amp; Grammar</p>
                             </div>
                         </div>
-                        <span class="text-xl font-black text-slate-900 dark:text-white">85%</span>
+                        <span class="text-xl font-black text-slate-900 dark:text-white" id="dashboard-verbal-score">0%</span>
                     </div>
-                    <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div class="h-full bg-blue-500 rounded-full" style="width: 85%;"></div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -281,21 +268,25 @@
                 // Fetch latest profile
                 const profile = await api.getStudentProfile(user._id);
                 if (profile) {
-                    // Update screening scores
-                    const scoreTexts = document.querySelectorAll('.text-xl.font-black');
-                    const bars = document.querySelectorAll('.h-full.bg-orange-500, .h-full.bg-primary, .h-full.bg-blue-500');
+                    const scores = profile.screeningScores || {};
+                    const aptitude = scores.aptitude || 0;
+                    const coding = scores.coding || 0;
+                    const verbal = scores.verbal ?? scores.gd ?? 0;
 
-                    if (scoreTexts.length >= 3) {
-                        scoreTexts[0].innerText = `${profile.screeningScores.aptitude}%`;
-                        scoreTexts[1].innerText = `${profile.screeningScores.coding}%`;
-                        scoreTexts[2].innerText = `${profile.screeningScores.gd}%`;
+                    const aptitudeScore = document.getElementById('dashboard-aptitude-score');
+                    const codingScore = document.getElementById('dashboard-coding-score');
+                    const verbalScore = document.getElementById('dashboard-verbal-score');
+                    const aptitudeBar = document.getElementById('dashboard-aptitude-bar');
+                    const codingBar = document.getElementById('dashboard-coding-bar');
+                    const verbalBar = document.getElementById('dashboard-verbal-bar');
 
-                        if (bars.length >= 3) {
-                            bars[0].style.width = `${profile.screeningScores.aptitude}%`;
-                            bars[1].style.width = `${profile.screeningScores.coding}%`;
-                            bars[2].style.width = `${profile.screeningScores.gd}%`;
-                        }
-                    }
+                    if (aptitudeScore) aptitudeScore.innerText = `${aptitude}%`;
+                    if (codingScore) codingScore.innerText = `${coding}%`;
+                    if (verbalScore) verbalScore.innerText = `${verbal}%`;
+
+                    if (aptitudeBar) aptitudeBar.style.width = `${aptitude}%`;
+                    if (codingBar) codingBar.style.width = `${coding}%`;
+                    if (verbalBar) verbalBar.style.width = `${verbal}%`;
 
                     // Update Resume Score
                     const resumeScoreText = document.querySelector('h3.text-5xl.font-black');

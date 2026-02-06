@@ -12,7 +12,6 @@ const navLinks = {
         { name: 'Resume', url: 'resume.html' },
         { name: 'Screening', url: 'screening.html' },
         { name: 'Results', url: 'results.html' },
-        { name: 'Progress', url: 'progress.html' },
         { name: 'News', url: 'news.html' }
     ],
     admin: [
