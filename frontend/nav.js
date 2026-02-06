@@ -33,8 +33,7 @@ function initNav() {
         `).join('');
     }
 
-    const logoutBtn = document.querySelector('button:contains("Logout"), button:contains("Sign out"), button:contains("Log Out")');
-    // Simple way to find logout
+    // Handle logout buttons
     const buttons = document.querySelectorAll('button');
     buttons.forEach(btn => {
         if (btn.innerText.toLowerCase().includes('logout')) {
@@ -46,10 +45,12 @@ function initNav() {
     });
 
     // Update welcome message if element exists
-    const welcomeMsg = document.querySelector('p:contains("Welcome back")');
-    if (welcomeMsg && user.name) {
-        welcomeMsg.innerText = `Welcome back, ${user.name}! Review your progress and upcoming opportunities.`;
-    }
+    const paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach(p => {
+        if (p.textContent.includes('Welcome back') && user.name) {
+            p.innerText = `Welcome back, ${user.name}! Review your progress and upcoming opportunities.`;
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', initNav);

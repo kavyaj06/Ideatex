@@ -1,0 +1,47 @@
+JOHN DOE
+Software Engineer
+john.doe@email.com | (555) 123-4567 | LinkedIn: linkedin.com/in/johndoe
+
+PROFESSIONAL SUMMARY
+Results-driven Software Engineer with 3+ years of experience in full-stack web development. Proficient in JavaScript, React, Node.js, and cloud technologies. Passionate about building scalable applications and solving complex problems.
+
+WORK EXPERIENCE
+
+Senior Software Engineer | Tech Solutions Inc. | Jan 2023 - Present
+• Developed and maintained multiple web applications using React and Node.js
+• Improved application performance by optimizing database queries, reducing load time by 40%
+• Collaborated with cross-functional teams to deliver features on tight deadlines
+• Mentored junior developers on best practices and code reviews
+
+Junior Developer | StartUp Co. | Jun 2021 - Dec 2022
+• Built RESTful APIs using Express.js and MongoDB
+• Implemented authentication and authorization using JWT
+• Participated in agile development processes and daily standups
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+University of Technology | Graduated: May 2021
+GPA: 3.7/4.0
+
+TECHNICAL SKILLS
+Languages: JavaScript, Python, HTML, CSS, SQL
+Frameworks: React, Node.js, Express, Tailwind CSS
+Tools: Git, Docker, MongoDB, PostgreSQL, AWS
+Soft Skills: Team collaboration, Problem-solving, Communication
+
+PROJECTS
+
+E-Commerce Platform
+• Built a full-stack e-commerce application with React frontend and Node.js backend
+• Integrated Stripe payment gateway and implemented shopping cart functionality
+• Deployed on AWS with CI/CD pipeline using GitHub Actions
+
+Task Management App
+• Created a responsive task management application using React and Firebase
+• Implemented real-time updates using Firebase Realtime Database
+• Designed intuitive UI/UX with Material-UI components
+
+CERTIFICATIONS
+• AWS Certified Developer - Associate (2023)
+• MongoDB Certified Developer (2022)

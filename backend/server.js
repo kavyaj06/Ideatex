@@ -34,10 +34,17 @@ app.get('/api/health', (req, res) => {
 const authRoutes = require('./routes/auth');
 const dataRoutes = require('./routes/data');
 const aiRoutes = require('./routes/ai');
+const resumeAiRoutes = require('./routes/resumeAi');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/data', dataRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/resume', resumeAiRoutes);
+
+// Test resume route
+app.post('/api/resume/test', (req, res) => {
+    res.json({ message: 'Resume test route works!' });
+});
 
 // Test route
 app.get('/api/test', (req, res) => {

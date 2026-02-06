@@ -309,66 +309,205 @@
     <script src="api.js"></script>
     <script src="nav.js"></script>
     <script>
+        let currentResumeData = null;
+
         async function loadResumeData() {
             const user = JSON.parse(localStorage.getItem('user'));
             if (!user) return;
 
             try {
                 const profile = await api.getStudentProfile(user._id);
-                if (profile) {
-                    // Update Gauge
-                    const scoreVal = profile.resumeScore || 0;
-                    const scoreText = document.querySelector('.text-5xl.font-bold');
-                    if (scoreText) scoreText.innerHTML = `${scoreVal}<span class="text-2xl text-slate-400">%</span>`;
-
-                    const gaugeProgress = document.querySelector('.gauge-progress');
-                    if (gaugeProgress) {
-                        // stroke-dasharray: 452; stroke-dashoffset: 452 * (1 - score/100)
-                        const offset = 452 * (1 - scoreVal / 100);
-                        gaugeProgress.style.strokeDashoffset = offset;
-                    }
-
-                    // Update Feedback
-                    const feedbackHighlight = document.querySelector('p.text-xs.leading-relaxed.text-slate-600');
-                    if (feedbackHighlight) {
-                        feedbackHighlight.innerText = profile.resumeFeedback || "Analysis pending. Please re-scan your resume.";
-                    }
+                if (profile && profile.resumeScore) {
+                    updateResumeUI(profile.resumeScore, profile.resumeFeedback || "Analysis complete");
                 }
-
-                // Handle Re-scan
-                const rescanBtn = document.querySelectorAll('button').forEach(btn => {
-                    if (btn.innerText.includes('Re-scan')) {
-                        btn.onclick = async () => {
-                            btn.innerText = 'Calculating...';
-                            const result = await api.getResumeScore(user._id);
-                            if (result) {
-                                alert('Resume Analyzed Successfully!');
-                                location.reload();
-                            }
-                        };
-                    }
-                });
             } catch (err) {
                 console.error(err);
             }
         }
-        
+
+        function updateResumeUI(scoreVal, feedback) {
+            // Update Gauge
+            const scoreText = document.querySelector('.text-5xl.font-bold');
+            if (scoreText) scoreText.innerHTML = `${scoreVal}<span class="text-2xl text-slate-400">%</span>`;
+
+            const gaugeProgress = document.querySelector('.gauge-progress');
+            if (gaugeProgress) {
+                const offset = 452 * (1 - scoreVal / 100);
+                gaugeProgress.style.strokeDashoffset = offset;
+            }
+        }
+
         // Handle PDF Upload
-        function handlePdfUpload(event) {
+        async function handlePdfUpload(event) {
             const file = event.target.files[0];
-            if (file && file.type === 'application/pdf') {
+            if (!file || file.type !== 'application/pdf') {
+                alert('Please upload a valid PDF file');
+                return;
+            }
+
+            const uploadBtn = document.querySelector('label[for="pdfUpload"]');
+            const originalText = uploadBtn.innerHTML;
+            uploadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">hourglass_empty</span> Analyzing...';
+            uploadBtn.disabled = true;
+
+            try {
                 const formData = new FormData();
                 formData.append('resume', file);
+
+                const response = await fetch('/api/resume/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Upload failed');
+                }
+
+                const result = await response.json();
                 
-                // You can send this to backend for processing
-                alert(`PDF "${file.name}" uploaded successfully! Resume will be analyzed.`);
-                console.log('Uploaded PDF:', file.name);
+                console.log('📊 API Response:', result);
                 
-                // Optionally trigger re-scan after upload
-                // location.reload();
-            } else {
-                alert('Please upload a valid PDF file');
+                if (result.success && result.data) {
+                    currentResumeData = result.data;
+                    console.log('📋 Analysis Data:', result.data);
+                    displayAnalysisResults(result.data);
+                    console.log('✅ Display function called');
+                    alert('Resume analyzed successfully!');
+                } else {
+                    console.error('❌ Invalid result:', result);
+                    alert('Analysis incomplete. Please try again.');
+                }
+            } catch (err) {
+                console.error('Error uploading PDF:', err);
+                alert('Error: ' + err.message);
+            } finally {
+                uploadBtn.innerHTML = originalText;
+                uploadBtn.disabled = false;
             }
+        }
+
+        function displayAnalysisResults(analysis) {
+            console.log('📊 Displaying analysis results:', analysis);
+            
+            // Update Overall Score
+            if (analysis.overallScore !== undefined) {
+                const scoreText = document.querySelector('.text-5xl.font-bold');
+                console.log('Score element found:', scoreText);
+                if (scoreText) {
+                    scoreText.innerHTML = `${analysis.overallScore}<span class="text-2xl text-slate-400">%</span>`;
+                    const gaugeProgress = document.querySelector('.gauge-progress');
+                    if (gaugeProgress) {
+                        const offset = 452 * (1 - analysis.overallScore / 100);
+                        gaugeProgress.style.strokeDashoffset = offset;
+                    }
+                    console.log('✅ Score updated:', analysis.overallScore);
+                } else {
+                    console.error('❌ Score element not found');
+                }
+            }
+
+            // Update Skill Gaps
+            if (analysis.skillGaps && analysis.skillGaps.length > 0) {
+                const headings = Array.from(document.querySelectorAll('h3'));
+                console.log('Found headings:', headings.map(h => h.textContent.trim()));
+                const skillGapHeading = headings.find(h => h.textContent.includes('Skill Gap Analysis'));
+                console.log('Skill Gap heading:', skillGapHeading);
+                const skillGapsContainer = skillGapHeading?.nextElementSibling;
+                console.log('Skills container:', skillGapsContainer);
+                
+                if (skillGapsContainer) {
+                    skillGapsContainer.innerHTML = analysis.skillGaps.map(skill => `
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-semibold text-slate-700">${skill.skill}</span>
+                                <span class="text-primary font-bold">${skill.match}%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: ${skill.match}%"></div>
+                            </div>
+                        </div>
+                    `).join('');
+                    console.log('✅ Skill gaps updated:', analysis.skillGaps.length, 'items');
+                    // Scroll to skill gaps
+                    skillGapsContainer.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    console.error('❌ Skill gaps container not found');
+                }
+            }
+
+            // Update Feedback Highlights
+            if (analysis.feedback && analysis.feedback.length > 0) {
+                const headings = Array.from(document.querySelectorAll('h3'));
+                const feedbackHeading = headings.find(h => h.textContent.includes('AI Feedback Highlights'));
+                console.log('Feedback heading:', feedbackHeading);
+                const feedbackContainer = feedbackHeading?.closest('.bg-white')?.querySelector('.grid');
+                console.log('Feedback container:', feedbackContainer);
+                
+                if (feedbackContainer) {
+                    feedbackContainer.innerHTML = analysis.feedback.slice(0, 4).map(item => {
+                        const icons = {
+                            'positive': 'check_circle',
+                            'warning': 'warning',
+                            'improvement': 'lightbulb'
+                        };
+                        const colors = {
+                            'positive': 'text-emerald-500',
+                            'warning': 'text-amber-500',
+                            'improvement': 'text-blue-500'
+                        };
+                        return `
+                            <div class="p-4 bg-secondary rounded-lg border border-primary/10">
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined ${colors[item.type] || 'text-primary'} text-[20px] mt-0.5">${icons[item.type] || 'info'}</span>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-800">${item.title}</h4>
+                                        <p class="text-xs leading-relaxed text-slate-600 mt-1">${item.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    console.log('✅ Feedback updated:', analysis.feedback.length, 'items');
+                } else {
+                    console.error('❌ Feedback container not found');
+                }
+            }
+
+            // Update Critical Improvements
+            if (analysis.criticalImprovements && analysis.criticalImprovements.length > 0) {
+                const headings = Array.from(document.querySelectorAll('h3'));
+                const improvementsHeading = headings.find(h => h.textContent.includes('Critical Improvements'));
+                console.log('Improvements heading:', improvementsHeading);
+                const improvementsContainer = improvementsHeading?.closest('.bg-white')?.querySelector('.divide-y');
+                console.log('Improvements container:', improvementsContainer);
+                
+                if (improvementsContainer) {
+                    improvementsContainer.innerHTML = analysis.criticalImprovements.map(imp => {
+                        const colors = ['red', 'amber', 'orange'];
+                        const color = colors[imp.number - 1] || 'slate';
+                        return `
+                            <div class="p-6 flex gap-6">
+                                <div class="hidden sm:flex flex-shrink-0 w-12 h-12 bg-${color}-50 rounded-full items-center justify-center text-${color}-500 font-bold border border-${color}-100 text-sm">
+                                    ${String(imp.number).padStart(2, '0')}
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold text-slate-800 mb-2">${imp.title}</h4>
+                                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">${imp.description}</p>
+                                    <div class="bg-slate-50 border border-slate-200 p-3 rounded text-xs font-mono text-slate-500 italic">
+                                        "${imp.suggestedEdit}"
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    console.log('✅ Improvements updated:', analysis.criticalImprovements.length, 'items');
+                } else {
+                    console.error('❌ Improvements container not found');
+                }
+            }
+            
+            console.log('🎉 All updates complete!');
         }
         
         loadResumeData();
