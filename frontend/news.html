@@ -233,11 +233,25 @@
         async function loadAnnouncements() {
             try {
                 const response = await fetch('http://localhost:3000/api/data/announcements');
+                if (!response.ok) {
+                    console.error('API Error:', response.status);
+                    return;
+                }
                 const announcements = await response.json();
+                console.log('Announcements loaded:', announcements.length);
                 const container = document.querySelector('.space-y-6');
                 
-                if (container && announcements.length > 0) {
-                    const colorStyles = {
+                if (!container) {
+                    console.error('Container .space-y-6 not found');
+                    return;
+                }
+                
+                if (announcements.length === 0) {
+                    container.innerHTML = '<p class="text-slate-500">No announcements available.</p>';
+                    return;
+                } 
+                
+                const colorStyles = {
                         'Placement': { bg: '#EDE9FE', icon: '#7c3aed', text: '#6D28D9', icon_name: 'business' },
                         'Workshop': { bg: '#DBEAFE', icon: '#3b82f6', text: '#2563EB', icon_name: 'school' },
                         'General News': { bg: '#F1F5F9', icon: '#64748b', text: '#475569', icon_name: 'newspaper' },
@@ -274,7 +288,6 @@
                             </div>
                         `;
                     }).join('');
-                }
             } catch (err) {
                 console.error('Error loading announcements:', err);
             }

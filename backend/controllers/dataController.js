@@ -25,10 +25,13 @@ exports.getCompanies = async (req, res) => {
 // Announcements
 exports.addAnnouncement = async (req, res) => {
     try {
+        console.log('Creating announcement with data:', req.body);
         const announcement = new Announcement(req.body);
         await announcement.save();
+        console.log('Announcement saved successfully:', announcement);
         res.status(201).json(announcement);
     } catch (err) {
+        console.error('Error creating announcement:', err.message);
         res.status(500).json({ error: err.message });
     }
 };

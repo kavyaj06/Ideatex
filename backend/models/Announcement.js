@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const AnnouncementSchema = new mongoose.Schema({
     title: { type: String, required: true },
     content: { type: String, required: true },
-    type: { type: String, enum: ['Placement', 'Workshop', 'General News', 'Hackathon', 'Company Update', 'Interview Schedule', 'Test Instruction', 'Result'], default: 'General News' },
+    type: { type: String, default: 'General News' },
     postedBy: { type: String, default: 'Admin' },
     createdAt: { type: Date, default: Date.now }
 });
